@@ -8,7 +8,7 @@
                         href="https://www.aheworks.com/">{{Auth::user()->name}}</a></p>
             <form action="{{route("admin.logout")}}" method="post">
                 @csrf
-                <button type="submit" class="btn btn-outline-primary">Çıkış Yaap</button>
+                <button type="submit" class="btn btn-outline-primary">Çıkış Yap</button>
             </form>
         </div>
 

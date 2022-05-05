@@ -49,7 +49,7 @@
                         <div class="col-md-6">
                             <div class="wrap-input100">
                                 <div class="form-group">
-                                    <label for="exampleFormControlInput1">Adınızz</label>
+                                    <label for="exampleFormControlInput1">Adınız</label>
                                     <input type="text" class="form-control" name="name" placeholder="Adınız">
                                 </div>
                             </div>

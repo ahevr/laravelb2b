@@ -28,11 +28,17 @@ Route::group(["namespace"=>"site","as" => "site."],function (){
         Route::post("/check","HomePageController@check")->name("uye_check");
         Route::get("/register","HomePageController@register")->name("uye_register");
         Route::post("/register","HomePageController@create")->name("uye_register");
+        Route::get("/verify","HomePageController@verify")->name("verify");
+
+        Route::get("/password/forgot","HomePageController@forgetShow")->name("forgetpasswordForm");
+        Route::post("/password/forgot","HomePageController@sendforget")->name("sendForget");
+        Route::get("/password/reset/{token}","HomePageController@showResetForm")->name("resetPassForm");
+        Route::post("/password/resetpw","HomePageController@resetpw")->name("resetpw");
 
 
     });
 
-    Route::middleware(["auth:uye"])->group(function (){
+    Route::middleware(["auth:uye","is_uye_verify_email"])->group(function (){
 
         Route::get ("/","HomePageController@index")->name("index");
 

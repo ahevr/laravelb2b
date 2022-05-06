@@ -27,7 +27,9 @@
                 <x-jet-label for="password" value="{{ __('Şifre') }}" />
                 <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
             </div>
-
+            <a class="btn btn-dark text-sm text-gray-600 hover:text-gray-900" href="{{ route('site.forgetpasswordForm') }}">
+                {{ __('Şifremi Unuttum') }}
+            </a>
             <div class="flex items-center justify-between mt-4">
             
                     <a class="btn btn-dark text-sm text-gray-600 hover:text-gray-900" href="{{ route('site.uye_register') }}">

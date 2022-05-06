@@ -31,7 +31,8 @@ class Uye extends Authenticatable
         'phone',
         'il',
         'ilce',
-        'adres'
+        'adres',
+        'email_verified'
     ];
 
     /**

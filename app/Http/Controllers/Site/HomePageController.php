@@ -17,6 +17,7 @@ class HomePageController extends Controller
 {
 
 
+
     public function forgetShow(){
 
         return view("auth.forgot-password");
@@ -37,7 +38,7 @@ class HomePageController extends Controller
         ]);
 
         $action_link = route("site.resetPassForm",["token"=>$token,"email"=>$request->email]);
-        $body = "Lİnke tıklayarak şifrenizi değiştirebilirsiniz";
+        $body = "Linke tıklayarak şifrenizi değiştirebilirsiniz";
 
         Mail::send("email-forgot",["action_link"=>$action_link,"body"=>$body],function($message) use ($request){
 
@@ -46,10 +47,7 @@ class HomePageController extends Controller
                 ->subject("Şifremi Unuttum");
         });
 
-
-        return back()->with("toast_success","Şifre Sıfırlama E postası gönderildi");
-
-
+        return redirect()->route("site.forgetpasswordForm")->with("fail","Girdiğiniz e-postaya ait bir hesap varsa, şifrenizi belirleme talimatlarını size e-postayla gönderdik");
     }
 
     public function showResetForm(Request $request,$token = null){
@@ -63,7 +61,16 @@ class HomePageController extends Controller
 
         $request->validate([
             "email" =>"required",
-            "password" => "required",
+            'password'=> [
+                'required',
+                'string',
+                Password::min(6)
+                    ->mixedCase()
+                    ->numbers()
+                    ->symbols()
+                    ->uncompromised(),
+                'confirmed'
+            ],
             "password_confirmation" => "required",
         ]);
 
@@ -71,7 +78,7 @@ class HomePageController extends Controller
 
         if(!$check_token){
 
-            return back()->withInput()->with("toast_error","token geçersiz");
+            return back()->withInput()->with("toast_error","token geçersiz tekrar deneyin");
 
         }else{
             
@@ -85,9 +92,6 @@ class HomePageController extends Controller
 
 
     }
-
-
-
 
     public function verify(Request $request){
 
@@ -105,17 +109,16 @@ class HomePageController extends Controller
                 $verifyUye->uye->save();
 
 
-                return redirect()->route("site.uye_login")->with("toast_success","email iş tamam")->with("verifiedEmail",$uye->email);    
+                return redirect()->route("site.uye_login")->with("toast_success","Üyeliğiniz Onaylanmıştır.Giriş Yapabilirsiniz")->with("verifiedEmail",$uye->email);    
 
             } else { 
 
-                return redirect()->route("site.uye_login")->with("taost_success","email iş süper")->with("verifiedEmail",$uye->email);
+                return redirect()->route("site.uye_login")->with("taost_error","Birşeyler yanlış gitti")->with("verifiedEmail",$uye->email);
 
             }
         }
 
     }
-
 
     public function check(Request $request){
 
@@ -129,7 +132,7 @@ class HomePageController extends Controller
 
         }else{
 
-            return redirect()->route("site.uye_login");
+            return redirect()->route("site.uye_login")->with("fail","E-posta veya Şifre Hatalı");
         }
 
     }
@@ -168,7 +171,7 @@ class HomePageController extends Controller
                 'confirmed'
             ],
         ]);
-        
+
         $adminRegister = new Uye();
         $adminRegister->name = $request->name;
         $adminRegister->email = $request->email;
@@ -213,7 +216,7 @@ class HomePageController extends Controller
 
         return redirect()->route("site.uye_login")
             ->with("save",$save)
-            ->with("toast_success", "Sayın,". "<b>$request->name</b>" ." " ."<b>$request->surname</b>"  ." Kayıt İşleminiz Başarılı Bir Şekilde Tamamlandı. Giriş Yapabilirsiniz.");
+            ->with("toast_success", "Sayın,". "<b>$request->name</b>" ." " ."<b>$request->surname</b>"  ." Kayıt İşleminiz Başarılı Bir Şekilde Tamamlandı.Eposta adresinize gelen maili onaylayladıktan sonra giriş yapabilirsiniz.");
 
 
     }
@@ -224,4 +227,6 @@ class HomePageController extends Controller
         return view("app.site.homepage");
 
     }
+
+
 }

@@ -149,15 +149,15 @@ class HomePageController extends Controller
     public function create(Request $request){
 
         $request->validate([
-            "name" => "required|min:2|max:80",
-            "email" => "required",
-            "surname" =>"required|min:2|max:80",
-            "phone" => "required|digits:11|numeric",
-            "il" => "required",
-            "ilce" => "required",
+            "name"    => "required|min:2|max:80",
+            "email"   => "required|email|unique:uyes,email",
+            "surname" => "required|min:2|max:80",
+            "phone"   => "required|digits:11|numeric",
+            "il"      => "required",
+            "ilce"    => "required",
             "mahalle" => "required",
-            "adres" => "required",
-            'password' => [
+            "adres"   => "required",
+            'password'=> [
                 'required',
                 'string',
                 Password::min(6)
@@ -168,8 +168,8 @@ class HomePageController extends Controller
                 'confirmed'
             ],
         ]);
+        
         $adminRegister = new Uye();
-
         $adminRegister->name = $request->name;
         $adminRegister->email = $request->email;
         $adminRegister->surname = $request->surname;

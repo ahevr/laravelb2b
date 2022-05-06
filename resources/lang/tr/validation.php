@@ -158,6 +158,16 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        "phone"    => "Telefon",
+        "ilce"     => "İlçe",
+        "il"       => "İl",
+        "name"     => "Ad",
+        "surname"  => "Soyad",
+        "mahalle"  => "Mahalle",
+        "adres"    => "Adres",
+        "password" => "Şifre"
+
+    ],
 
 ];

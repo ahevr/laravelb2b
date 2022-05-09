@@ -19,12 +19,12 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
-{{--                <li class="sidebar-item {{(request()->is('admin/urunler')) ? 'active' : ""}} ">--}}
-{{--                    <a href="{{route("admin.urunler.index")}}" class='sidebar-link'>--}}
-{{--                        <i class="bi bi-box"></i>--}}
-{{--                        <span>Ürünler</span>--}}
-{{--                    </a>--}}
-{{--                </li>--}}
+               <li class="sidebar-item {{(request()->is('admin/products')) ? 'active' : ""}} ">
+                   <a href="{{route("admin.products.index")}}" class='sidebar-link'>
+                       <i class="bi bi-box"></i>
+                       <span>Ürünler</span>
+                   </a>
+               </li>
             </ul>
         </div>
         <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>

@@ -24,15 +24,15 @@
                     <div class="form-items">
                         <h3 class="text-center">Şifremi Değiştir</h3>
                         <p class="text-center">Ege Sedef Aydınlatma B2b Bayi Online Alısveris Sistemi</p>
-						@if (count($errors) > 0)
-						<div class="alert alert-danger">
-							<ol>
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ol>
-						</div>
-					@endif
+                            @if (count($errors) > 0)
+                                <div class="alert alert-danger">
+                                    <ol>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ol>
+                                </div>
+                            @endif
                         <form class="login100-form" method="POST" action="{{route("site.resetpw")}}">
 							@csrf
 							<input type="hidden" name="token" value="{{$token}}">

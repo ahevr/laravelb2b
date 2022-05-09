@@ -66,6 +66,14 @@ Route::group(["namespace"=>"Admin","prefix"=>"admin","as" => "admin."],function 
 
         Route::post("/logout", 'DashboardController@logout')->name('logout');
 
+        Route::group(["prefix"=>"products","as"=>"products."],function() {
+
+            Route::get("/","ProductController@index")->name("index");
+            Route::get("/create","ProductController@create")->name("create");
+            Route::post("/store","ProductsController@store")->name("store");
+
+        });
+
     });
 
 

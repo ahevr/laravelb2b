@@ -12,6 +12,31 @@
 
 
 
+
+<script src="{{asset("app/admin")}}/vendors/summernote/summernote-lite.min.js"></script>
+    <script>
+        $('#summernote').summernote({
+            tabsize: 2,
+            height: 120,
+        })
+        $("#hint").summernote({
+            height: 100,
+            toolbar: false,
+            placeholder: 'type with apple, orange, watermelon and lemon',
+            hint: {
+                words: ['apple', 'orange', 'watermelon', 'lemon'],
+                match: /\b(\w{1,})$/,
+                search: function (keyword, callback) {
+                    callback($.grep(this.words, function (item) {
+                        return item.indexOf(keyword) === 0;
+                    }));
+                }
+            }
+        });
+
+    </script>
+
+
 <script>
     $(".silButton").click(function () {
         var $data_url= $(this).data("url");
@@ -31,4 +56,37 @@
             }
         });
     });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $(document).on("keyup", ".hesaplama", calcAll); //
+        $(".hesaplama").on("change", calcAll); });
+    function calcAll() {
+        $(".satir").each(function () {
+            var fiyat = 0;
+            var iskonto = 0;
+            var kdvli = 0;
+
+            if (!isNaN(parseFloat($(this).find(".fiyat").val()))) {
+                fiyat = parseFloat($(this).find(".fiyat").val());
+            }
+            if (!isNaN(parseFloat($(this).find(".iskonto").val()))) {
+                iskonto = parseFloat($(this).find(".iskonto").val());
+            }
+            if (!isNaN(parseFloat($(this).find(".kdvli").val()))) {
+                kdvli = parseFloat($(this).find(".kdvli").val());
+            }
+            iskontotutar = fiyat * iskonto/100;
+            $(this).find(".iskontotutar").val(iskontotutar.toFixed(2));
+
+            kdvlitutar  = fiyat - iskontotutar
+
+            satisfiyat = kdvlitutar * kdvli ;
+            $(this).find(".satisfiyati").val(satisfiyat.toFixed(2));
+
+            satisfiyati = satisfiyat/100 + kdvlitutar  ;
+            $(this).find(".satisfiyati").val(satisfiyati.toFixed(2));
+        });
+    }
 </script>

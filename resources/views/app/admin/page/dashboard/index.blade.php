@@ -103,7 +103,6 @@
                     <div class="ms-3 name">
                         <h5 class="font-bold">{{Auth::user()->name}}</h5>
                         <h6 class="text-muted mb-0">{{Auth::user()->email}}</h6>
-                        <button class="btn btn-danger">test knk</button>
                     </div>
                 </div>
             </div>

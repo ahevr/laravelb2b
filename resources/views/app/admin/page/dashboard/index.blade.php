@@ -18,9 +18,6 @@
     </div>
 @endsection
 @section("content")
-
-
-
     <div class="col-md-9">
         <div class="row">
             <div class="col-6 col-lg-3 col-md-6">

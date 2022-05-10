@@ -70,7 +70,11 @@ Route::group(["namespace"=>"Admin","prefix"=>"admin","as" => "admin."],function 
 
             Route::get("/","ProductController@index")->name("index");
             Route::get("/create","ProductController@create")->name("create");
-            Route::post("/store","ProductsController@store")->name("store");
+            Route::post("/store","ProductController@store")->name("store");
+            Route::get ("/delete/{id}","ProductController@delete")->name("deleteproducts");
+            Route::get ("/status/{id}","ProductController@status")->name("status");
+            Route::get ("/isfyt/{id}","ProductController@isfyt")->name("isfytStatus");
+            Route::get ("/isnew/{id}","ProductController@isnew")->name("isnewStatus");
 
         });
 

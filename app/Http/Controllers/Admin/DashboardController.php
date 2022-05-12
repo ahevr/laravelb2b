@@ -26,7 +26,6 @@ class DashboardController extends Controller
 
     }
 
-
     public function index(){
 
         return view("app.admin.page.dashboard.index");
@@ -45,5 +44,6 @@ class DashboardController extends Controller
 
         return redirect("admin/login")->with("toast_success","Çıkış Başarılı");
     }
+
 
 }

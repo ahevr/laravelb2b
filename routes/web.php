@@ -66,8 +66,39 @@ Route::group(["namespace"=>"Admin","prefix"=>"admin","as" => "admin."],function 
 
         Route::post("/logout", 'DashboardController@logout')->name('logout');
 
-        Route::group(["prefix"=>"products","as"=>"products."],function() {
 
+        Route::group(["prefix"=>"users","as"=>"users."],function() {
+            Route::get( "/","UsersController@index")->name("index");
+            Route::get("/create","UsersController@create")->name("create");
+            Route::post("/store","UsersController@store")->name("store");
+            Route::get ("/delete/{id}","UsersController@delete")->name("deleteuser");
+            Route::get ("/edit/{id}", "UsersController@edit")->name("edit");
+            Route::post("/update/{id}", "UsersController@update")->name("update");
+        });
+
+
+        Route::group(["prefix"=>"role","as"=>"role."],function() {
+            Route::get( "/","RoleController@index")->name("index");
+            Route::get("/create","RoleController@create")->name("create");
+            Route::get("/show","RoleController@show")->name("show");
+            Route::post("/store","RoleController@store")->name("store");
+            Route::get ("/edit/{id}", "RoleController@edit")->name("edit");
+            Route::post("/update/{id}", "RoleController@update")->name("update");
+        });
+
+
+        Route::group(["prefix"=>"permission","as"=>"permission."],function() {
+            Route::get( "/","PermissionController@index")->name("index");
+            Route::get("/create","PermissionController@create")->name("create");
+            Route::get("/show","PermissionController@show")->name("show");
+            Route::post("/store","PermissionController@store")->name("store");
+            Route::get ("/edit/{id}", "PermissionController@edit")->name("edit");
+            Route::post("/update/{id}", "PermissionController@update")->name("update");
+        });
+
+
+
+        Route::group(["prefix"=>"products","as"=>"products."],function() {
             Route::get("/","ProductController@index")->name("index");
             Route::get("/create","ProductController@create")->name("create");
             Route::post("/store","ProductController@store")->name("store");
@@ -75,8 +106,19 @@ Route::group(["namespace"=>"Admin","prefix"=>"admin","as" => "admin."],function 
             Route::get ("/status/{id}","ProductController@status")->name("status");
             Route::get ("/isfyt/{id}","ProductController@isfyt")->name("isfytStatus");
             Route::get ("/isnew/{id}","ProductController@isnew")->name("isnewStatus");
+            Route::get ("/edit/{id}", "ProductController@edit")->name("edit");
+            Route::post("/update/{id}", "ProductController@update")->name("update");
 
         });
+
+        Route::group(["prefix"=>"categories","as"=>"categories."],function() {
+            Route::get( "/","CategoriesController@index")->name("index");
+            Route::post("/addCategory","CategoriesController@store")->name("addCategory");
+            Route::get ("/delete/{id}","CategoriesController@delete")->name("deleteCategory");
+            Route::get ("/deleteSub/{id}","CategoriesController@deleteSub")->name("deleteCategorySub");
+        });
+
+
 
     });
 

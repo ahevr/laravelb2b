@@ -73,13 +73,14 @@
                                         <div class="mb-4">
                                             <label>Stok Adeti <span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" name="stock_quantity"
-                                                   placeholder="Ürün Stok Adeti"/>
+                                                   placeholder="Ürün Stok Adeti"
+                                                   value="{{ old('stock_quantity') }}"/>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label">Ürün Açıklaması</label>
-                                    <textarea id="summernote" name="product_desc"></textarea>
+                                    <textarea id="summernote" name="product_desc">{{ old('product_desc') }}</textarea>
                                 </div>
                         </div>
                     </div>
@@ -92,25 +93,33 @@
                                     <div class="col-lg-3">
                                         <div class="mb-4">
                                             <label for="product_name" class="form-label">En</label>
-                                            <input type="text" class="form-control" name="width" placeholder="Ürün En Giriniz"/>
+                                            <input type="text" class="form-control" name="width"
+                                                   placeholder="Ürün En Giriniz"
+                                                   value="{{ old('width') }}"/>
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="mb-4">
                                             <label for="product_name" class="form-label">Boy</label>
-                                            <input type="text" class="form-control" name="height" placeholder="Ürün Boy Giriniz"/>
+                                            <input type="text" class="form-control" name="height"
+                                                   placeholder="Ürün Boy Giriniz"
+                                                   value="{{ old('height') }}"/>
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="mb-4">
                                             <label for="product_name" class="form-label">Yükseklik</label>
-                                            <input type="text" class="form-control" name="length" placeholder="Ürün Yükseklik"/>
+                                            <input type="text" class="form-control" name="length"
+                                                   placeholder="Ürün Yükseklik"
+                                                   value="{{ old('length') }}"/>
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="mb-4">
                                             <label for="product_name" class="form-label">Ağırlık</label>
-                                            <input type="text" class="form-control" name="kg" placeholder="Ürün KG"/>
+                                            <input type="text" class="form-control" name="kg"
+                                                   placeholder="Ürün KG"
+                                                   value="{{ old('kg') }}"/>
                                         </div>
                                     </div>
                                 </div>
@@ -118,19 +127,25 @@
                                     <div class="col-md-4">
                                         <div class="mb-4">
                                             <label class="form-label">Renk</label>
-                                            <input type="text" class="form-control" name="color" placeholder="Ürün Renk "/>
+                                            <input type="text" class="form-control" name="color"
+                                                   placeholder="Ürün Renk"
+                                                   value="{{ old('color') }}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="mb-4">
                                             <label class="form-label">Ampül</label>
-                                            <input type="text" class="form-control" name="bulb" placeholder="Ürün Ampül Sayısı"/>
+                                            <input type="text" class="form-control" name="bulb"
+                                                   placeholder="Ürün Ampül Sayısı"
+                                                   value="{{ old('bulb') }}"/>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="mb-4">
                                             <label class="form-label">Malzeme</label>
-                                            <input type="text" class="form-control" name="material" placeholder="Ürün Malzemesi"/>
+                                            <input type="text" class="form-control" name="material"
+                                                   placeholder="Ürün Malzemesi"
+                                                   value="{{ old('material') }}"/>
                                         </div>
                                     </div>
                                 </div>
@@ -138,19 +153,25 @@
                                     <div class="col-md-4">
                                         <div class="mb-4">
                                             <label class="form-label">Duy</label>
-                                            <input type="text" class="form-control" name="duy" placeholder="Ürün Duy Tipi"/>
+                                            <input type="text" class="form-control" name="duy"
+                                                   placeholder="Ürün Duy Tipi"
+                                                   value="{{ old('duy') }}"/>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="mb-4">
                                             <label for="product_name" class="form-label">Garanti Süresi</label>
-                                            <input type="text" class="form-control" name="warranty_period" placeholder="Ürün Garanti Süresi"/>
+                                            <input type="text" class="form-control" name="warranty_period"
+                                                   placeholder="Ürün Garanti Süresi"
+                                                   value="{{ old('warranty_period') }}"/>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="mb-4">
                                             <label for="product_name" class="form-label">Kullanım Alanı</label>
-                                            <input type="text" class="form-control" name="usage_area" placeholder="Ürün Kullanım Alanı"/>
+                                            <input type="text" class="form-control" name="usage_area"
+                                                   placeholder="Ürün Kullanım Alanı"
+                                                   value="{{ old('usage_area') }}"/>
                                         </div>
                                     </div>
                                 </div>
@@ -158,13 +179,17 @@
                                     <div class="col-md-6">
                                         <div class="mb-4">
                                             <label for="product_name" class="form-label">Kol Adeti</label>
-                                            <input type="text" class="form-control" name="kol_sayisi" placeholder="Ürün Kol Adeti"/>
+                                            <input type="text" class="form-control" name="kol_sayisi"
+                                                   placeholder="Ürün Kol Adeti"
+                                                   value="{{ old('kol_sayisi') }}"/>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="mb-4">
                                             <label for="product_name" class="form-label">Katalog Yıl</label>
-                                            <input type="text" class="form-control" name="catalog_year" placeholder="Ürünün Katalog Yılı"/>
+                                            <input type="text" class="form-control" name="catalog_year"
+                                                   placeholder="Ürünün Katalog Yılı"
+                                                   value="{{ old('catalog_year') }}"/>
                                         </div>
                                     </div>
                                 </div>
@@ -193,26 +218,34 @@
                                     <div class="mb-4">
                                         <label class="form-label">Fiyat</label>
                                         <div class="row gx-2">
-                                            <input placeholder="₺" type="text" name="price" class="form-control fiyat hesaplama" />
+                                            <input placeholder="₺" type="text" name="price"
+                                                   class="form-control fiyat hesaplama"
+                                                   value="{{old('price')}}"/>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="mb-4">
                                         <label class="form-label">İndirim Oranı</label>
-                                        <input placeholder="%" type="text" name="discount" class="form-control iskonto hesaplama" />
+                                        <input placeholder="%" type="text" name="discount"
+                                               class="form-control iskonto hesaplama"
+                                               value="{{old('discount')}}"/>
                                     </div>
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="mb-4">
                                         <label class="form-label">KDV</label>
-                                        <input placeholder="½" type="text" name="tax" class="form-control kdvli hesaplama" />
+                                        <input placeholder="½" type="text" name="tax"
+                                               class="form-control kdvli hesaplama"
+                                               value="{{old('tax')}}"/>
                                     </div>
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="mb-4">
                                         <label class="form-label">Toplam Fiyat</label>
-                                        <input placeholder="₺" type="text" name="total_price" class="form-control satisfiyati" />
+                                        <input placeholder="₺" type="text" name="total_price"
+                                               class="form-control satisfiyati"
+                                               value="{{old('total_price')}}"/>
                                     </div>
                                 </div>
                             </div>
@@ -235,7 +268,9 @@
                                 </div>
                                 <div class="col-sm-6 mb-3">
                                     <label class="form-label">Marka</label>
-                                    <input type="text" class="form-control" name="brand" placeholder="Marka"/>
+                                    <input type="text" class="form-control" name="brand"
+                                           placeholder="Marka"
+                                           value="{{old('brand')}}"/>
                                 </div>
                             </div>
                             <!-- row.// -->

@@ -38,8 +38,7 @@ class ProductController extends Controller
             "tax"=> "required", "usage_area"=> "required", "kol_sayisi"=> "required", "material"=> "required",
             "width"=> "required", "height"=> "required", "length"=> "required", "kg"=> "required",
             "warranty_period"=> "required", "brand"=> "required", "color"=> "required", "bulb"=> "required",
-            "category_id"=> "required", "duy"=> "required",
-        ]);
+            "category_id"=> "required", "duy"=> "required",]);
 
         $products = new ProductModel();
 

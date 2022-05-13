@@ -101,9 +101,8 @@ Route::group(["namespace"=>"Admin","prefix"=>"admin","as" => "admin."],function 
             Route::get ("/status/{id}","ProductController@status")->name("status");
             Route::get ("/isfyt/{id}","ProductController@isfyt")->name("isfytStatus");
             Route::get ("/isnew/{id}","ProductController@isnew")->name("isnewStatus");
-            Route::get ("/edit/{id}", "ProductController@edit")->name("edit");
-            Route::post("/update/{id}", "ProductController@update")->name("update");
-
+            Route::get ("/edit/{id}","ProductController@edit")->name("edit");
+            Route::post("/update/{id}","ProductController@update")->name("update");
         });
 
         Route::group(["prefix"=>"categories","as"=>"categories."],function() {
@@ -116,6 +115,12 @@ Route::group(["namespace"=>"Admin","prefix"=>"admin","as" => "admin."],function 
         Route::group(["prefix"=>"bayi","as"=>"bayi."],function() {
 
             Route::get( "/","BayiController@index")->name("index");
+            Route::get("/create","BayiController@create")->name("create");
+            Route::post("/store","BayiController@store")->name("store");
+            Route::get ("/delete/{id}","BayiController@delete")->name("delete");
+            Route::get ("/edit/{id}","BayiController@edit")->name("edit");
+            Route::post("/update/{id}","BayiController@update")->name("update");
+
         });
 
 

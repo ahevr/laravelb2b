@@ -20,7 +20,6 @@ class UsersController extends Controller
         $this->middleware('permission:user-delete', ['only' => ['user.delete']]);
     }
 
-
     public function index(){
 
         $users = User::all();

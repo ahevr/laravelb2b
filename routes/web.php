@@ -66,7 +66,6 @@ Route::group(["namespace"=>"Admin","prefix"=>"admin","as" => "admin."],function 
 
         Route::post("/logout", 'DashboardController@logout')->name('logout');
 
-
         Route::group(["prefix"=>"users","as"=>"users."],function() {
             Route::get( "/","UsersController@index")->name("index");
             Route::get("/create","UsersController@create")->name("create");
@@ -75,7 +74,6 @@ Route::group(["namespace"=>"Admin","prefix"=>"admin","as" => "admin."],function 
             Route::get ("/edit/{id}", "UsersController@edit")->name("edit");
             Route::post("/update/{id}", "UsersController@update")->name("update");
         });
-
 
         Route::group(["prefix"=>"role","as"=>"role."],function() {
             Route::get( "/","RoleController@index")->name("index");
@@ -86,7 +84,6 @@ Route::group(["namespace"=>"Admin","prefix"=>"admin","as" => "admin."],function 
             Route::post("/update/{id}", "RoleController@update")->name("update");
         });
 
-
         Route::group(["prefix"=>"permission","as"=>"permission."],function() {
             Route::get( "/","PermissionController@index")->name("index");
             Route::get("/create","PermissionController@create")->name("create");
@@ -95,8 +92,6 @@ Route::group(["namespace"=>"Admin","prefix"=>"admin","as" => "admin."],function 
             Route::get ("/edit/{id}", "PermissionController@edit")->name("edit");
             Route::post("/update/{id}", "PermissionController@update")->name("update");
         });
-
-
 
         Route::group(["prefix"=>"products","as"=>"products."],function() {
             Route::get("/","ProductController@index")->name("index");
@@ -116,6 +111,11 @@ Route::group(["namespace"=>"Admin","prefix"=>"admin","as" => "admin."],function 
             Route::post("/addCategory","CategoriesController@store")->name("addCategory");
             Route::get ("/delete/{id}","CategoriesController@delete")->name("deleteCategory");
             Route::get ("/deleteSub/{id}","CategoriesController@deleteSub")->name("deleteCategorySub");
+        });
+
+        Route::group(["prefix"=>"bayi","as"=>"bayi."],function() {
+
+            Route::get( "/","BayiController@index")->name("index");
         });
 
 

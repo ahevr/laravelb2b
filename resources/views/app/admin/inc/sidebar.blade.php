@@ -58,6 +58,13 @@
                     </li>
                 @endcan
 
+                <li class="sidebar-item {{(request()->is('admin/bayi')) ? 'active' : ""}} ">
+                    <a href="{{route("admin.bayi.index")}}" class='sidebar-link'>
+                        <i class="fa-solid fa-user-group"></i>
+                        <span>Bayiler</span>
+                    </a>
+                </li>
+
 
             </ul>
         </div>

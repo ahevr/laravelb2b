@@ -9,12 +9,17 @@ use App\Models\Admin\ProductModel;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Traits\ProductTrait;
 
 class ProductController extends Controller
 {
+
+    use ProductTrait;
+
     public function index(){
 
-        $products = ProductModel::latest()->paginate(10);
+    $products = ProductModel::latest()->paginate(10);
+//      $products = $this->getDataPaginate(new ProductModel());
 
         return view("app.admin.page.products.index")
             ->with("products",$products);
@@ -23,7 +28,8 @@ class ProductController extends Controller
 
     public function create(){
 
-        $categories = CategoriesModel::all();
+      $categories = CategoriesModel::all();
+//    $categories = $this->getData(new CategoriesModel());
 
         return view("app.admin.page.products.create")
             ->with("categories",$categories);
@@ -143,6 +149,7 @@ class ProductController extends Controller
     }
 
     public function status ($id){
+
         $status = ProductModel::select("isActive")->where("id",$id)->first();
         if ($status->isActive == "1") {
             $isActive = "0";
@@ -156,6 +163,7 @@ class ProductController extends Controller
     }
 
     public function isfyt ($id){
+
         $status = ProductModel::select("isFyt")->where("id",$id)->first();
         if ($status->isFyt == "1") {
             $isFyt = "0";

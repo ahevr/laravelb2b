@@ -77,14 +77,16 @@ class ProductController extends Controller
         $products->bulb            = $request->bulb;
         $products->category_id     = $request->category_id;
         $products->duy             = $request->duy;
+        $products->image           = $request->file('image');
 
-        if($request->hasfile('image')) {
-            $file = $request->file('image');
-            $extenstion = $file->getClientOriginalExtension();
-            $filename = time().'.'.$extenstion;
-            $file->move('app/admin/uploads/urunler/', $filename);
-            $products->image = $filename;
-        }
+
+//        if($request->hasfile('image')) {
+//            $file = $request->file('image');
+//            $extenstion = $file->getClientOriginalExtension();
+//            $filename = time().'.'.$extenstion;
+//            $file->move('app/admin/uploads/urunler/', $filename);
+//            $products->image = $filename;
+//        }
 
         $products->save();
 

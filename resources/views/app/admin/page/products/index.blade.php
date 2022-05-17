@@ -23,29 +23,97 @@
     @if(count($products) == 0 )
         <div class="alert alert-warning" role="alert">
             Herhangi bir kayıt bulunamadı. <a href="{{route("admin.products.create")}}" class="alert-link">Buradan</a> yeni bir kayıt oluşturabilirsiniz.
+            <a class="btn btn-primary" href="{{route("admin.products.create")}}"><i class="fa-solid fa-plus"></i> Ürün Ekle</a>
+            <a class="btn btn-success" href="{{route('admin.products.file-export') }}"><i class="fa fa-file-excel"></i> Toplu Ürün İndir</a>
+            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-file-excel"></i>
+                Toplu Ürün Yükle
+            </button>
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Toplu Ürün Yükleme</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ route('admin.products.file-import') }}" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="exampleFormControlFile1">Excel Yükle</label>
+                                    <input type="file" name="file" id="file"  class="form-control-file btn btn-success">
+                                    <br>
+                                </div>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                                <input type="submit" name="submit" value="Yükle" class="btn btn-danger" />
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                <a href="{{route("admin.products.deleteproductsAll")}}" class="btn btn-danger"> <i class="fa fa-trash"></i> Tüm Verileri Sil</a>
+
         </div>
     @else
         <div class="card">
             <div class="card-header">
-                <div class="card-title" style="float: right">
-                    <a href="{{route("admin.products.create")}}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Yeni Oluştur</a>
-                    <a href="{{route('admin.products.file-export') }}" class="btn dropdown-item"> <i class="icon material-icons md-home"></i>Excel İndir</a>
-                </div>
-                <form action="{{ route('admin.products.file-import') }}" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group">
-                        <label for="exampleFormControlFile1">Excel Yükle</label>
-                        <input type="file" name="file" id="file"  class="form-control-file btn btn-success">
-                        <br>
-                        <input type="submit" name="submit" value="Yükle" class="btn btn-danger" />
-                    </div>
-                </form>
                 <h4 class="card-title">Ürünler Listesi</h4>
+            </div>
+            <div class="card-body">
+                <a class="btn btn-primary" href="{{route("admin.products.create")}}"><i class="fa-solid fa-plus"></i> Ürün Ekle</a>
+                <a class="btn btn-success" href="{{route('admin.products.file-export') }}"><i class="fa fa-file-excel"></i> Toplu Ürün İndir</a>
+                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-file-excel"></i>
+                    Toplu Ürün Yükle
+                </button>
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Toplu Ürün Yükleme</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="{{ route('admin.products.file-import') }}" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="form-group">
+                                        <label for="exampleFormControlFile1">Excel Yükle</label>
+                                        <input type="file" name="file" id="file"  class="form-control-file btn btn-success">
+                                        <br>
+                                    </div>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                                    <input type="submit" name="submit" value="Yükle" class="btn btn-danger" />
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @can("products-all-delete")
+                    <a href="{{route("admin.products.deleteproductsAll")}}" class="btn btn-danger"> <i class="fa fa-trash"></i> Tüm Verileri Sil</a>
+                @endcan
             </div>
             <div class="card-content">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-lg">
+                    <form action="{{route("admin.products.searchproducts")}}"  >
+                        <div class="card-title" style="float:right">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <input type="text" class="form-control" name="q" placeholder="Ürün Ara...">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <table class="table table-lg table-responsive">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -87,11 +155,13 @@
                                     <?php  } ?>
                                 </td>
                                 <td>
-                                    <button
-                                            data-url="{{route("admin.products.deleteproducts",$productRow)}}"
-                                            class="btn btn-danger silButton">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </button>
+                                    @can("deleteproducts")
+                                        <button
+                                                data-url="{{route("admin.products.deleteproducts",$productRow)}}"
+                                                class="btn btn-danger silButton">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    @endcan
                                     <a href="{{route("admin.products.edit",$productRow)}}"
                                        class="btn btn-primary">
                                         <i class="fa-solid fa-edit"></i>
@@ -101,8 +171,10 @@
                             </tr>
                         @endforeach
                         </tbody>
-
                     </table>
+                    <ul class="pagination justify-content-end">
+                        {{$products->onEachSide(0)->links()}}
+                    </ul>
                 </div>
             </div>
         </div>

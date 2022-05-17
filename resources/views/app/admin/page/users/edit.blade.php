@@ -58,8 +58,7 @@
                                 <div class="mb-4">
                                     <label>Şifre <span class="text-danger">*</span></label>
                                     <input type="password" class="form-control" name="password"
-                                           placeholder="Şifre"
-                                           value="{{$user->password}}"/>
+                                           placeholder="Şifre"/>
                                 </div>
                             </div>
                             <div class="form-group">

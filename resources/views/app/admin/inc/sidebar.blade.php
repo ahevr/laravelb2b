@@ -19,12 +19,15 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
+
                <li class="sidebar-item {{(request()->is('admin/products')) ? 'active' : ""}} ">
                    <a href="{{route("admin.products.index")}}" class='sidebar-link'>
                        <i class="fa-solid fa-box"></i>
                        <span>Ürünler</span>
                    </a>
                </li>
+
+
                 <li class="sidebar-item {{(request()->is('admin/categories')) ? 'active' : ""}} ">
                     <a href="{{route("admin.categories.index")}}" class='sidebar-link'>
                         <i class="fa-solid fa-book-open"></i>

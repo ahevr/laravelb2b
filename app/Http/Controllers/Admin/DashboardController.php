@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Auth;
 class DashboardController extends Controller
 {
 
+    public function index(){
+
+        return view("app.admin.page.dashboard.index");
+
+    }
+
     public function check(Request $request){
 
         $request->validate(["email"=>"required|email|exists:users,email"]);
@@ -17,18 +23,12 @@ class DashboardController extends Controller
 
         if (Auth::guard("web")->attempt($creds)){
 
-            return redirect()->route("admin.index")->with("toast_success","Hoş Geldiniz"." ".Auth::guard("web")->user()->name);
+            return redirect()->route("admin.index")->with("toast_info","Hoş Geldiniz"." ".Auth::guard("web")->user()->name);
 
         }else{
 
             return redirect()->route("admin.login")->with("fail","E-posta veya Şifre Hatalı");;
         }
-
-    }
-
-    public function index(){
-
-        return view("app.admin.page.dashboard.index");
 
     }
 

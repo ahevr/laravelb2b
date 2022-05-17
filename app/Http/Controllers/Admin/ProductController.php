@@ -16,6 +16,14 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ProductController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:products-list|products-create|products-edit|products-delete', ['only' => ['products.index','products.store']]);
+        $this->middleware('permission:products-create', ['only' => ['products.create','products.store']]);
+        $this->middleware('permission:products-edit', ['only' => ['products.edit','products.update']]);
+        $this->middleware('permission:products-all-delete', ['only' => ['products.deleteproductsAll']]);
+        $this->middleware('permission:deleteproducts', ['only' => ['products.deleteproducts']]);
+    }
 
     use ProductTrait;
 
@@ -220,6 +228,13 @@ class ProductController extends Controller
 
         Excel::import(new ProductImport,request()->file('file'));
         return back();
+    }
+
+    public function deleteAll(){
+
+        ProductModel::truncate();
+        return back();
+
     }
 
 

@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class VerifyUye extends Model
+class VerifyBayi extends Model
 {
 
-    public $table = "verify_uye";
+    public $table = "verify_bayi";
 
     protected $guarded = [];
 
-    public function uye(){
+    public function bayi(){
 
-        return $this->belongsTo(Uye::class);
+        return $this->belongsTo(Bayi::class);
 
     }
 

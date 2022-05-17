@@ -29,7 +29,17 @@
             <div class="card-header">
                 <div class="card-title" style="float: right">
                     <a href="{{route("admin.products.create")}}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Yeni Oluştur</a>
+                    <a href="{{route('admin.products.file-export') }}" class="btn dropdown-item"> <i class="icon material-icons md-home"></i>Excel İndir</a>
                 </div>
+                <form action="{{ route('admin.products.file-import') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">Excel Yükle</label>
+                        <input type="file" name="file" id="file"  class="form-control-file btn btn-success">
+                        <br>
+                        <input type="submit" name="submit" value="Yükle" class="btn btn-danger" />
+                    </div>
+                </form>
                 <h4 class="card-title">Ürünler Listesi</h4>
             </div>
             <div class="card-content">
@@ -85,6 +95,7 @@
                                     <a href="{{route("admin.products.edit",$productRow)}}"
                                        class="btn btn-primary">
                                         <i class="fa-solid fa-edit"></i>
+                                    </a>
                                     </a>
                                 </td>
                             </tr>

@@ -20,7 +20,15 @@
     </div>
 @endsection
 @section("content")
-
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ol>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ol>
+        </div>
+    @endif
     <section class="section">
         <div class="row">
             <form action="{{route("admin.bayi.store")}}" method="post" enctype="multipart/form-data">
@@ -94,6 +102,15 @@
                                 </div>
                             </div>
 
+                            <div class="col-md-6">
+                                <div class="mb-4">
+                                    <label for="product_name" class="form-label">Bayi Mahalle</label>
+                                    <input type="text" class="form-control" name="bayi_mahalle"
+                                           placeholder="Bayi İlce"
+                                           value="{{old("bayi_mahalle")}}"/>
+                                </div>
+                            </div>
+
 
                             <div class="col-md-3">
                                 <div class="mb-4">
@@ -130,10 +147,17 @@
                             <div class="col-md-12">
                                 <div class="mb-4">
                                     <label for="product_name" class="form-label">Bayi Şifre</label>
-                                    <input type="text" class="form-control" name="bayi_password"
+                                    <input type="text" class="form-control" name="password"
                                            placeholder="Bayi Şifresi"
-                                           value="{{old("bayi_password")}}"/>
+                                           value="{{old("password")}}"/>
                                 </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <input class="form-control" type="text" name="password_confirmation" placeholder="Şifre Tekrar" required>
+                                @error('password_confirmation')
+                                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                     </div>

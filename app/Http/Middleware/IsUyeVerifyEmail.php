@@ -19,8 +19,8 @@ class IsUyeVerifyEmail
     {
 
 
-        if(!Auth::guard('uye')->user()->email_verified){
-            Auth::guard('uye')->logout();
+        if(!Auth::guard('bayi')->user()->email_verified){
+            Auth::guard('bayi')->logout();
             return redirect()->route("site.uye_login")->with("toast_success","Eposta Adresini Kontrol Et ve Maili Onayla")->withInput();
         }
 

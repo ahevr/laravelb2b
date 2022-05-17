@@ -81,7 +81,15 @@
                                     <label for="product_name" class="form-label">Bayi İlce</label>
                                     <input type="text" class="form-control" name="bayi_ilce"
                                            placeholder="Bayi İlce"
-                                           value="{{$bayi->bayi_ilce}}"/>
+                                           value="{{$bayi->bayi_ilce }}"/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-4">
+                                    <label for="product_name" class="form-label">Bayi Mahalle</label>
+                                    <input type="text" class="form-control" name="bayi_mahalle"
+                                           placeholder="Bayi İlce"
+                                           value="{{$bayi->bayi_mahalle }}"/>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -126,14 +134,7 @@
                                            value="{{$bayi->bayi_kdv}}"/>
                                 </div>
                             </div>
-                            <div class="col-md-12">
-                                <div class="mb-4">
-                                    <label for="product_name" class="form-label">Bayi Şifre</label>
-                                    <input type="password" class="form-control" name="bayi_password"
-                                           placeholder="Bayi Şifresi"
-                                           value="{{$bayi->bayi_password}}"/>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                     <div class="d-flex justify-content-center mb-5">

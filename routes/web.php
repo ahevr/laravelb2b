@@ -22,7 +22,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 Route::group(["namespace"=>"site","as" => "site."],function (){
 
-    Route::middleware(["guest:uye"])->group(function (){
+    Route::middleware(["guest:bayi"])->group(function (){
 
         Route::get("/login","HomePageController@login")->name("uye_login");
         Route::post("/check","HomePageController@check")->name("uye_check");
@@ -38,7 +38,7 @@ Route::group(["namespace"=>"site","as" => "site."],function (){
 
     });
 
-    Route::middleware(["auth:uye","is_uye_verify_email"])->group(function (){
+    Route::middleware(["auth:bayi","is_uye_verify_email"])->group(function (){
 
         Route::get ("/","HomePageController@index")->name("index");
 
@@ -103,6 +103,9 @@ Route::group(["namespace"=>"Admin","prefix"=>"admin","as" => "admin."],function 
             Route::get ("/isnew/{id}","ProductController@isnew")->name("isnewStatus");
             Route::get ("/edit/{id}","ProductController@edit")->name("edit");
             Route::post("/update/{id}","ProductController@update")->name("update");
+
+            Route::get("/file-export", "ProductController@fileExport")->name("file-export");
+            Route::post("/file-import", "ProductController@fileImport")->name('file-import');
         });
 
         Route::group(["prefix"=>"categories","as"=>"categories."],function() {
@@ -113,14 +116,12 @@ Route::group(["namespace"=>"Admin","prefix"=>"admin","as" => "admin."],function 
         });
 
         Route::group(["prefix"=>"bayi","as"=>"bayi."],function() {
-
             Route::get( "/","BayiController@index")->name("index");
             Route::get("/create","BayiController@create")->name("create");
             Route::post("/store","BayiController@store")->name("store");
             Route::get ("/delete/{id}","BayiController@delete")->name("delete");
             Route::get ("/edit/{id}","BayiController@edit")->name("edit");
             Route::post("/update/{id}","BayiController@update")->name("update");
-
         });
 
 

@@ -23,16 +23,16 @@ class ProductModel extends Model
 
     }
 
-    public function setImageAttribute($value){
-
-        if($value) {
-            $file =$value;
-            $extenstion = $file->getClientOriginalExtension();
-            $filename = time().'.'.$extenstion;
-            $file->move('app/admin/uploads/urunler/', $filename);
-            $this->attributes['image'] = $filename;
-
-        }
-    }
+//    public function setImageAttribute($value){
+//
+//        if($value) {
+//            $file =$value;
+//            $extenstion = $file->getClientOriginalExtension();
+//            $filename = time().'.'.$extenstion;
+//            $file->move('app/admin/uploads/urunler/', $filename);
+//            $this->attributes['image'] = $filename;
+//
+//        }
+//    }
 
 }

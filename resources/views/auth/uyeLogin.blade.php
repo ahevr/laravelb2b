@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div class="form-body without-side">
-        
+
         <div class="row">
             <div class="img-holder">
                 <div class="bg"></div>
@@ -45,8 +45,8 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <input class="form-control" type="email"  name="email"  value="{{ old('email') }}"placeholder="Eposta Adresi" required>
-                                        @error('email')
+                                    <input class="form-control" type="email"  name="bayi_email"  value="{{ old('bayi_email') }}"placeholder="Eposta Adresi" required>
+                                        @error('bayi_email')
                                             <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                         @enderror
                                 </div>
@@ -57,7 +57,7 @@
                                         @enderror
                                 </div>
                             </div>
-                        
+
                                 <div class="form-button">
                                     <div class="d-flex justify-content-center">
                                         <button id="submit" type="submit" class="ibtn">Giriş Yap</button>

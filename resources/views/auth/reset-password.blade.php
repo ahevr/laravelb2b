@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div class="form-body without-side">
-        
+
         <div class="row">
             <div class="img-holder">
                 <div class="bg"></div>
@@ -42,7 +42,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <input type="text" class="form-control" name="email" value="{{$email ?? old("email")}}" placeholder="Email">
+                                    <input type="text" class="form-control" name="bayi_email" value="{{$email ?? old("bayi_email")}}" placeholder="Email">
                                 </div>
 								<div class="col-md-12">
                                     <input type="text" class="form-control" name="password"  placeholder="Şifre">

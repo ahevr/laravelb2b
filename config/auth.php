@@ -21,6 +21,10 @@ return [
         'driver'=>'eloquent',
         'model'=>App\Models\Uye::class,
     ],
+    'bayi'=>[
+        'driver'=>'eloquent',
+        'model'=>App\Models\Bayi::class,
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -52,6 +56,10 @@ return [
         'uye'=>[
             'driver'=>'session',
             'provider'=>'uyes',
+        ],
+        'bayi'=>[
+            'driver'=>'session',
+            'provider'=>'bayi',
         ],
     ],
 
@@ -86,6 +94,10 @@ return [
             'driver'=>'eloquent',
             'model'=>App\Models\Uye::class,
         ],
+        'bayi'=>[
+            'driver'=>'eloquent',
+            'model'=>App\Models\Bayi::class,
+        ],
     ],
 
     /*
@@ -113,6 +125,10 @@ return [
         'uyes'=>[
             'driver'=>'eloquent',
             'model'=>App\Models\Uye::class,
+        ],
+        'bayi'=>[
+            'driver'=>'eloquent',
+            'model'=>App\Models\Bayi::class,
         ],
     ],
 

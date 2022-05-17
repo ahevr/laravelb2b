@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div class="form-body without-side">
-        
+
         <div class="row">
             <div class="img-holder">
                 <div class="bg"></div>
@@ -27,7 +27,7 @@
                         <h3 class="text-center">Yeni Bayi Kayıt</h3>
                         <p class="text-center">Ege Sedef Aydınlatma B2b Bayi Online Alısveris Sistemi</p>
 
-                        {{-- @if (count($errors) > 0)
+                         @if (count($errors) > 0)
                             <div class="alert alert-danger">
                                 <ol>
                                     @foreach ($errors->all() as $error)
@@ -35,7 +35,7 @@
                                     @endforeach
                                 </ol>
                             </div>
-                        @endif --}}
+                        @endif
 
 
                         @if(session('status'))
@@ -54,28 +54,23 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <input class="form-control" type="text"  name="name"  value="{{ old('name') }}"placeholder="Adınız" required>
-                                        @error('name')
+                                    <input class="form-control" type="text"  name="bayi_adi"  value="{{ old('bayi_adi') }}"placeholder="Bayi Adı" required>
+                                        @error('bayi_adi')
                                             <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                         @enderror
                                 </div>
-                                <div class="col-md-6">
-                                    <input class="form-control" type="text"  name="surname" value="{{ old('surname') }}"placeholder="Soyadınız" required>
-                                        @error('surname')
-                                            <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                                        @enderror
-                                </div>
-                                <div class="col-md-6">
-                                    <input class="form-control" type="email" name="email" value="{{ old('email') }}"placeholder="E-mail Address" required>
-                                        @error('email')
-                                            <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                                        @enderror
-                                </div>
+
                                 <div class="col-md-6 mb-3">
-                                    <input class="form-control" type="phone" name="phone" value="{{ old('phone') }}" placeholder="Telefon" maxlength="11" required>
+                                    <input class="form-control" type="phone" name="bayi_telefon" value="{{ old('bayi_telefon') }}" placeholder="Bayi Telefon" maxlength="11" required>
                                         @error('phone')
                                             <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                         @enderror
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <input class="form-control" type="email" name="bayi_email" value="{{ old('bayi_email') }}" placeholder="Bayi Email"  required>
+                                    @error('bayi_email')
+                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-12 text-center">
@@ -84,26 +79,26 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <select class="custom-select mb-3" name="il" id="ilselect"></select>
-                                    @error('il')
+                                    <select class="custom-select mb-3" name="bayi_il" id="ilselect"></select>
+                                    @error('bayi_il')
                                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-md-4">
-                                    <select class="custom-select mb-3" name="ilce" id="ilceselect"></select>
-                                    @error('ilce')
+                                    <select class="custom-select mb-3" name="bayi_ilce" id="ilceselect"></select>
+                                    @error('bayi_ilce')
                                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-md-4">
-                                    <select class="custom-select mb-3" name="mahalle" id="mahalleselect"></select>
-                                    @error('mahalle')
+                                    <select class="custom-select mb-3" name="bayi_mahalle" id="mahalleselect"></select>
+                                    @error('bayi_mahalle')
                                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-md-12">
-                                    <textarea class="form-control" name="adres" rows="3" placeholder="Adres">{{ old('adres') }}</textarea>
-                                    @error('adres')
+                                    <textarea class="form-control" name="bayi_adres" rows="3" placeholder="Adres">{{ old('bayi_adres') }}</textarea>
+                                    @error('bayi_adres')
                                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -114,13 +109,13 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <input class="form-control" type="password" name="password" placeholder="Şifre" required>
+                                    <input class="form-control" type="text" name="password" placeholder="Şifre" required>
                                     @error('password')
                                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-md-12">
-                                    <input class="form-control" type="password" name="password_confirmation" placeholder="Şifre Tekrar" required>
+                                    <input class="form-control" type="text" name="password_confirmation" placeholder="Şifre Tekrar" required>
                                     @error('password_confirmation')
                                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                     @enderror

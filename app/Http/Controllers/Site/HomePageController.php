@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\Bayi;
 use App\Models\Uye;
-use App\Models\VerifyUye;
+use App\Models\VerifyBayi;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,8 +17,6 @@ use Illuminate\Validation\Rules\Password;
 class HomePageController extends Controller
 {
 
-
-
     public function forgetShow(){
 
         return view("auth.forgot-password");
@@ -26,24 +25,24 @@ class HomePageController extends Controller
 
     public function sendforget(Request $request){
 
-        $request->validate(["email"=>  "required|email|exists:uyes,email"]);
+        $request->validate(["bayi_email"=>"required|email|exists:bayi,bayi_email"]);
 
         $token = \Str::random(64);
 
         DB::table("password_resets")->insert([
-                   
-            "email" =>$request->email,
+
+            "bayi_email" =>$request->bayi_email,
             "token" =>$token,
             "created_at" => Carbon::now(),
         ]);
 
-        $action_link = route("site.resetPassForm",["token"=>$token,"email"=>$request->email]);
+        $action_link = route("site.resetPassForm",["token"=>$token,"bayi_email"=>$request->bayi_email]);
         $body = "Linke tıklayarak şifrenizi değiştirebilirsiniz";
 
         Mail::send("email-forgot",["action_link"=>$action_link,"body"=>$body],function($message) use ($request){
 
             $message->from("ahmethusreversen@hotmail.com","Laravelb2B");
-            $message->to($request->email,"Ahevr")
+            $message->to($request->bayi_email,"Ahevr")
                 ->subject("Şifremi Unuttum");
         });
 
@@ -52,15 +51,13 @@ class HomePageController extends Controller
 
     public function showResetForm(Request $request,$token = null){
 
-
-        return view("auth.reset-password")->with(["token"=>$token,"email"=>$request->email]);
+        return view("auth.reset-password")->with(["token"=>$token,"bayi_email"=>$request->bayi_email]);
 
     }
 
     public function resetpw(Request $request){
 
         $request->validate([
-            "email" =>"required",
             'password'=> [
                 'required',
                 'string',
@@ -74,19 +71,19 @@ class HomePageController extends Controller
             "password_confirmation" => "required",
         ]);
 
-        $check_token = DB::table("password_resets")->where(["email"=>$request->email,"token"=>$request->token])->first();
+        $check_token = DB::table("password_resets")->where(["bayi_email"=>$request->bayi_email,"token"=>$request->token])->first();
 
         if(!$check_token){
 
             return back()->withInput()->with("toast_error","token geçersiz tekrar deneyin");
 
         }else{
-            
-            Uye::where('email',$request->email)->update(["password"=>Hash::make($request->password)]);
 
-            DB::table("password_resets")->where(["email"=>$request->email])->delete();
+            Bayi::where('bayi_email',$request->bayi_email)->update(["password"=>Hash::make($request->password)]);
 
-            return redirect()->route("site.uye_login")->with("toast_success","Şifreniz başarılı bir şekilde değiştirildi.")->with("verifyEmail",$request->email);
+            DB::table("password_resets")->where(["bayi_email"=>$request->bayi_email])->delete();
+
+            return redirect()->route("site.uye_login")->with("toast_success","Şifreniz başarılı bir şekilde değiştirildi.")->with("verifyEmail",$request->bayi_email);
 
         }
 
@@ -97,23 +94,23 @@ class HomePageController extends Controller
 
         $token = $request->token;
 
-        $verifyUye = VerifyUye::where("token",$token)->first();
+        $bayiUye = VerifyBayi::where("token",$token)->first();
 
-        if(!is_null($verifyUye)){
-            
-            $uye = $verifyUye->uye;
+        if(!is_null($bayiUye)){
+
+            $uye = $bayiUye->bayi;
 
             if(!$uye->email_verified){
 
-                $verifyUye->uye->email_verified = 1;
-                $verifyUye->uye->save();
+                $bayiUye->bayi->email_verified = 1;
+                $bayiUye->bayi->save();
 
 
-                return redirect()->route("site.uye_login")->with("toast_success","Üyeliğiniz Onaylanmıştır.Giriş Yapabilirsiniz")->with("verifiedEmail",$uye->email);    
+                return redirect()->route("site.uye_login")->with("toast_success","Üyeliğiniz Onaylanmıştır.Giriş Yapabilirsiniz")->with("verifiedEmail",$uye->bayi_email);
 
-            } else { 
+            } else {
 
-                return redirect()->route("site.uye_login")->with("taost_error","Birşeyler yanlış gitti")->with("verifiedEmail",$uye->email);
+                return redirect()->route("site.uye_login")->with("taost_error","Birşeyler yanlış gitti")->with("verifiedEmail",$uye->bayi_email);
 
             }
         }
@@ -122,15 +119,18 @@ class HomePageController extends Controller
 
     public function check(Request $request){
 
-        $request->validate(["email"=>"required|email|exists:uyes,email","password"=>"required"]);
+        $request->validate([
+            "bayi_email"=>"required|email|exists:bayi,bayi_email",
+            "password"=>"required"
+        ]);
 
-        $creds = $request->only("email","password");
+        $creds = $request->only("bayi_email","password");
 
-        if (Auth::guard("uye")->attempt($creds)){
+        if (Auth::guard("bayi")->attempt($creds)){
 
             return redirect()->route("site.index");
 
-        }else{
+        } else{
 
             return redirect()->route("site.uye_login")->with("fail","E-posta veya Şifre Hatalı");
         }
@@ -152,14 +152,7 @@ class HomePageController extends Controller
     public function create(Request $request){
 
         $request->validate([
-            "name"    => "required|min:2|max:80",
-            "email"   => "required|email|unique:uyes,email",
-            "surname" => "required|min:2|max:80",
-            "phone"   => "required|digits:11|numeric",
-            "il"      => "required",
-            "ilce"    => "required",
-            "mahalle" => "required",
-            "adres"   => "required",
+            "bayi_adi"    => "required|min:2|max:80",
             'password'=> [
                 'required',
                 'string',
@@ -172,37 +165,36 @@ class HomePageController extends Controller
             ],
         ]);
 
-        $adminRegister = new Uye();
-        $adminRegister->name = $request->name;
-        $adminRegister->email = $request->email;
-        $adminRegister->surname = $request->surname;
-        $adminRegister->phone = $request->phone;
-        $adminRegister->il = $request->il;
-        $adminRegister->ilce = $request->ilce;
-        $adminRegister->adres = $request->adres;
-        $adminRegister->mahalle = $request->mahalle;
-        $adminRegister->password =  Hash::make($request->password);
+        $bayiRegister = new Bayi();
+        $bayiRegister->bayi_adi = $request->bayi_adi;
+        $bayiRegister->bayi_email = $request->bayi_email;
+        $bayiRegister->bayi_telefon = $request->bayi_telefon;
+        $bayiRegister->bayi_il = $request->bayi_il;
+        $bayiRegister->bayi_ilce = $request->bayi_ilce;
+        $bayiRegister->bayi_mahalle = $request->bayi_mahalle;
+        $bayiRegister->bayi_adres = $request->bayi_adres;
+        $bayiRegister->password =  Hash::make($request->password);
 
-        $save = $adminRegister->save();
+        $save =  $bayiRegister->save();
 
-        $last_id = $adminRegister->id;
+        $last_id = $bayiRegister->id;
 
         $token = $last_id.hash('sha256', \Str::random(120));
 
         $verfiyURL = route("site.verify",["token"=>$token,"service"=>"Email_verification"]);
 
-        VerifyUye::create([
-            "uye_id"=>$last_id,
-            "token"=>$token,
+        VerifyBayi::create([
+
+            "bayi_id" => $last_id,
+            "token" => $token,
             ]);
 
-            $message = "dear <b>".$request->name."</b>";
             $message = "Teşekkürler";
 
             $mail_data = [
-                "recipient" => $request->email,
-                "fromEmail" => $request->email,
-                "fromName"  => $request->name,
+                "recipient" => $request->bayi_email,
+                "fromEmail" => $request->bayi_email,
+                "fromName"  => $request->bayi_adi,
                 "subject"  => "Email Verification",
                 "body"    => $message,
                 "actionLink" => $verfiyURL,
@@ -216,17 +208,15 @@ class HomePageController extends Controller
 
         return redirect()->route("site.uye_login")
             ->with("save",$save)
-            ->with("toast_success", "Sayın,". "<b>$request->name</b>" ." " ."<b>$request->surname</b>"  ." Kayıt İşleminiz Başarılı Bir Şekilde Tamamlandı.Eposta adresinize gelen maili onaylayladıktan sonra giriş yapabilirsiniz.");
+            ->with("toast_success", "Kayıt İşleminiz Başarılı Bir Şekilde Tamamlandı.Eposta adresinize gelen maili onaylayladıktan sonra giriş yapabilirsiniz.");
 
 
     }
-
 
     public function index(){
 
         return view("app.site.homepage");
 
     }
-
 
 }

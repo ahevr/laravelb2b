@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\ProductExport;
 use App\Helper\urlHelper;
 use App\Http\Controllers\Controller;
+use App\Imports\ProductImport;
 use App\Models\Admin\CategoriesModel;
 use App\Models\Admin\ProductModel;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Traits\ProductTrait;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProductController extends Controller
 {
@@ -18,7 +21,7 @@ class ProductController extends Controller
 
     public function index(){
 
-    $products = ProductModel::latest()->paginate(10);
+    $products = ProductModel::orderBy("id","DESC")->paginate(10);
 //      $products = $this->getDataPaginate(new ProductModel());
 
         return view("app.admin.page.products.index")
@@ -77,16 +80,16 @@ class ProductController extends Controller
         $products->bulb            = $request->bulb;
         $products->category_id     = $request->category_id;
         $products->duy             = $request->duy;
-        $products->image           = $request->file('image');
+//        $products->image           = $request->file('image');
 
 
-//        if($request->hasfile('image')) {
-//            $file = $request->file('image');
-//            $extenstion = $file->getClientOriginalExtension();
-//            $filename = time().'.'.$extenstion;
-//            $file->move('app/admin/uploads/urunler/', $filename);
-//            $products->image = $filename;
-//        }
+        if($request->hasfile('image')) {
+            $file = $request->file('image');
+            $extenstion = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extenstion;
+            $file->move('app/admin/uploads/urunler/', $filename);
+            $products->image = $filename;
+        }
 
         $products->save();
 
@@ -207,6 +210,19 @@ class ProductController extends Controller
         return back()->with("toast_success","Ürün Başarılı Bir Şekilde Silindi");
 
     }
+
+    public function fileExport(){
+
+        return Excel::download(new ProductExport, 'users-collection.xlsx');
+    }
+
+    public function fileImport(Request $request){
+
+        Excel::import(new ProductImport,request()->file('file'));
+        return back();
+    }
+
+
 
 
 

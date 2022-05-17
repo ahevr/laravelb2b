@@ -36,21 +36,23 @@
                     <div class="table-responsive">
                         <table class="table table-lg">
                             <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Bayi Kodu</th>
-                                    <th>Bayi Adı</th>
-                                    <th>Bayi İskontosu</th>
-                                    <th>İşlemler</th>
-                                </tr>
+                            <tr>
+                                <th>ID</th>
+                                <th>Bayi Adı</th>
+                                <th>Bayi Kodu</th>
+                                <th>Bayi İskontosu</th>
+                                <th>Bayi KDV</th>
+                                <th>İşlemler</th>
+                            </tr>
                             </thead>
                             <tbody>
                             @foreach($bayi as $bayiRow)
                                 <tr>
                                     <td>{{$bayiRow->id}}</td>
-                                    <td>{{$bayiRow->bayi_kodu}}</td>
                                     <td>{{$bayiRow->bayi_adi}}</td>
+                                    <td>{{$bayiRow->bayi_kodu}}</td>
                                     <td><b>{{$bayiRow->bayi_isk1}} + {{$bayiRow->bayi_isk2}}</b></td>
+                                    <td><b>{{$bayiRow->bayi_kdv}}</b></td>
                                     <td>
                                         <button
                                             data-url="{{route("admin.bayi.delete",$bayiRow)}}"

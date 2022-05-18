@@ -11,6 +11,15 @@ class CategoriesModel extends Model
 
     protected $guarded = [];
 
+    //hangi kategoriden kaç tane var//
+
+    public function category_id(){
+
+        return $this->hasMany(ProductModel::class, 'category_id', 'id');
+
+    }
+
+
     public function childs() {
 
         return $this->hasMany(CategoriesModel::class,'parent_id','id') ;

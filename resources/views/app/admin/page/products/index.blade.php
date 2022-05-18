@@ -130,7 +130,11 @@
                         @foreach($products as $productRow)
                             <tr>
                                 <td class="text-bold-500">{{$productRow->id}}</td>
-                                <td><img src="{{asset("app/admin/uploads/urunler/".$productRow->image)}}" width="100" alt="{{$productRow->product_name}}"></td>
+                                <td>
+                                    <a href="{{route("admin.products.edit",$productRow)}}">
+                                        <img src="{{asset("app/admin/uploads/urunler/".$productRow->image)}}" width="100" alt="{{$productRow->product_name}}">
+                                    </a>
+                                </td>
                                 <td>{{$productRow->product_name}}</td>
                                 <td><b>{{number_format($productRow->price,2,',','.') }}</b> TL</td>
                                 <td>

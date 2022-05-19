@@ -60,17 +60,10 @@ class UsersController extends Controller
 
     }
 
-    public function delete($id){
-
-        $users = User::find($id);
-        $users->delete();
-        return back()->with("toast_success","Kullanıcı Başarılı Bir Şekilde Silindi");
-    }
-
     public function edit($id){
 
-        $user  = User::find($id);
-        $roles = Role::pluck('name', 'name')->all();
+        $user  = User::findOrFail($id);
+        $roles = Role::pluck('name','name')->all();
         $userRole = $user->roles->pluck('name', 'name')->all();
 
         return view('app.admin.page.users.edit')
@@ -100,4 +93,11 @@ class UsersController extends Controller
 
         return back()->with("toast_success","$request->name". " Kullanıcı Başarılı Bir Şekilde Güncellendi");
     }
+    public function delete($id){
+
+        $users = User::findOrFail($id);
+        $users->delete();
+        return back()->with("toast_success","Kullanıcı Başarılı Bir Şekilde Silindi");
+    }
+
 }

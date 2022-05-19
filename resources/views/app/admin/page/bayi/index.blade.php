@@ -51,7 +51,7 @@
                                     <td>{{$bayiRow->id}}</td>
                                     <td>{{$bayiRow->bayi_adi}}</td>
                                     <td>{{$bayiRow->bayi_kodu}}</td>
-                                    <td><b>{{$bayiRow->bayi_isk1}} + {{$bayiRow->bayi_isk2}}</b></td>
+                                    <td><b>{{$bayiRow->bayi_isk1}} +  {{$bayiRow->bayi_isk2}}</b></td>
                                     <td><b>{{$bayiRow->bayi_kdv}}</b></td>
                                     <td>
                                         <button

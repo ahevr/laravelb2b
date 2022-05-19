@@ -46,7 +46,7 @@ class PermissionController extends Controller
 
     public function edit($id){
 
-        $permission = Permission::find($id);
+        $permission = Permission::findOrFail($id);
 
         return view('app.admin.page.permissions.edit')
             ->with("permission",$permission);

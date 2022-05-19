@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="{{asset("app/admin")}}/vendors/perfect-scrollbar/perfect-scrollbar.css">
 <link rel="stylesheet" href="{{asset("app/admin")}}/vendors/bootstrap-icons/bootstrap-icons.css">
 <link rel="stylesheet" href="{{asset("app/admin")}}/css/app.css">
+<link rel="stylesheet" href="{{asset("app/admin")}}/css/switchery.css">
 <link rel="shortcut icon" href="{{asset("app/admin")}}/images/favicon.svg" type="image/x-icon">
 
 <link rel="stylesheet" href="{{asset("app/admin")}}/vendors/summernote/summernote-lite.min.css">

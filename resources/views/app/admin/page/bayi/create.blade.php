@@ -106,7 +106,7 @@
                                 <div class="mb-4">
                                     <label for="product_name" class="form-label">Bayi Mahalle</label>
                                     <input type="text" class="form-control" name="bayi_mahalle"
-                                           placeholder="Bayi İlce"
+                                           placeholder="Bayi Mahalle"
                                            value="{{old("bayi_mahalle")}}"/>
                                 </div>
                             </div>

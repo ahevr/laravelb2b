@@ -58,46 +58,22 @@ class ProductController extends Controller
             "category_id"=> "required", "duy"=> "required",]);
 
         $products = new ProductModel();
-
+        $products->fill($request->all());
         $products->product_url     = urlHelper::permalink($request->product_name);
-        $products->product_name    = $request->product_name;
-        $products->product_code    = $request->product_code;
-        $products->product_desc    = $request->product_desc;
-        $products->stock_status    = $request->stock_status;
-        $products->stock_quantity  = $request->stock_quantity;
-        $products->price           = $request->price;
-        $products->discount        = $request->discount;
-        $products->tax             = $request->tax;
-        $products->total_price     = $request->total_price;
-        $products->usage_area      = $request->usage_area;
-        $products->kol_sayisi      = $request->kol_sayisi;
-        $products->material        = $request->material;
-        $products->width           = $request->width;
-        $products->height          = $request->height;
-        $products->length          = $request->length;
-        $products->kg              = $request->kg;
-        $products->warranty_period = $request->warranty_period;
-        $products->catalog_year    = $request->catalog_year;
         $products->isActive        = 1;
         $products->isNew           = 1;
         $products->isFyt           = 1;
         $products->created_by      = Auth::guard("web")->id();
         $products->update_by       = 0;
-        $products->brand           = $request->brand;
-        $products->color           = $request->color;
-        $products->bulb            = $request->bulb;
-        $products->category_id     = $request->category_id;
-        $products->duy             = $request->duy;
-//        $products->image           = $request->file('image');
 
-
-        if($request->hasfile('image')) {
+        if($request->hasfile('image')) :
             $file = $request->file('image');
             $extenstion = $file->getClientOriginalExtension();
             $filename = time().'.'.$extenstion;
             $file->move('app/admin/uploads/urunler/', $filename);
             $products->image = $filename;
-        }
+
+        endif;
 
         $products->save();
 
@@ -109,7 +85,7 @@ class ProductController extends Controller
 
         $categories = CategoriesModel::all();
 
-        $product = ProductModel::where("id",$id)->first();
+        $product = ProductModel::findOrFail($id);
 
         return view("app.admin.page.products.update")
             ->with("categories",$categories)
@@ -121,39 +97,17 @@ class ProductController extends Controller
 
         $products = ProductModel::findOrFail($id);
 
-        $products->product_url     = urlHelper::permalink($request->product_name);
-        $products->product_name    = $request->product_name;
-        $products->product_code    = $request->product_code;
-        $products->product_desc    = $request->product_desc;
-        $products->stock_status    = $request->stock_status;
-        $products->stock_quantity  = $request->stock_quantity;
-        $products->price           = $request->price;
-        $products->discount        = $request->discount;
-        $products->tax             = $request->tax;
-        $products->total_price     = $request->total_price;
-        $products->usage_area      = $request->usage_area;
-        $products->kol_sayisi      = $request->kol_sayisi;
-        $products->material        = $request->material;
-        $products->width           = $request->width;
-        $products->height          = $request->height;
-        $products->length          = $request->length;
-        $products->kg              = $request->kg;
-        $products->warranty_period = $request->warranty_period;
-        $products->catalog_year    = $request->catalog_year;
-        $products->update_by       = Auth::guard("web")->id();
-        $products->brand           = $request->brand;
-        $products->color           = $request->color;
-        $products->bulb            = $request->bulb;
-        $products->category_id     = $request->category_id;
-        $products->duy             = $request->duy;
+        $products->fill($request->all());
+        $products->product_url = urlHelper::permalink($request->product_name);
+        $products->update_by   = Auth::guard("web")->id();
 
-        if($request->hasfile('image')) {
+        if($request->hasfile('image')) :
             $file = $request->file('image');
             $extenstion = $file->getClientOriginalExtension();
             $filename = time().'.'.$extenstion;
             $file->move('app/admin/uploads/urunler/', $filename);
             $products->image = $filename;
-        }
+        endif;
 
         $products->update();
 
@@ -164,6 +118,7 @@ class ProductController extends Controller
     public function status ($id){
 
         $status = ProductModel::select("isActive")->where("id",$id)->first();
+
         if ($status->isActive == "1") {
             $isActive = "0";
         } else {
@@ -178,6 +133,7 @@ class ProductController extends Controller
     public function isfyt ($id){
 
         $status = ProductModel::select("isFyt")->where("id",$id)->first();
+
         if ($status->isFyt == "1") {
             $isFyt = "0";
         } else {
@@ -190,6 +146,7 @@ class ProductController extends Controller
     }
 
     public function isnew ($id){
+
         $status = ProductModel::select("isNew")->where("id",$id)->first();
         if ($status->isNew == "1") {
             $isNew = "0";
@@ -203,7 +160,7 @@ class ProductController extends Controller
 
     public function delete($id){
 
-        $products = ProductModel::find($id);
+        $products = ProductModel::findOrFail($id);
 
         $destination = "app/admin/uploads/urunler/".$products->image;
 

@@ -11,16 +11,13 @@ class CategoriesController extends Controller
 {
     public function index(){
 
-        $categories     = CategoriesModel::where('parent_id', '=', 0)->get();
+//        $categories     = CategoriesModel::where('parent_id', '=', 0)->get();
 
         $allCategories  = CategoriesModel::all();
-
+        $categories     = CategoriesModel::where('parent_id', 0)->get();
         return view("app.admin.page.categories.index")
             ->with("categories",$categories)
             ->with("allCategories",$allCategories);
-
-//        return view("app.admin.page.categories.index",compact("categories","allCategories"));
-
 
     }
 
@@ -45,7 +42,7 @@ class CategoriesController extends Controller
 
     public function delete($id){
 
-        $category = CategoriesModel::find($id);
+        $category = CategoriesModel::findOrFail($id);
 
         $category->delete();
 
@@ -54,7 +51,7 @@ class CategoriesController extends Controller
     }
     public function deleteSub($id){
 
-        $category = CategoriesModel::find($id);
+        $category = CategoriesModel::findOrFail($id);
 
         $category->delete();
 

@@ -33,11 +33,13 @@ class DashboardController extends Controller
 
         if (Auth::guard("web")->attempt($creds)){
 
-            return redirect()->route("admin.index")->with("toast_info","Hoş Geldiniz"." ".Auth::guard("web")->user()->name);
+            return redirect()->route("admin.index")
+                ->with("toast_info","Hoş Geldiniz"." ".Auth::guard("web")->user()->name);
 
         }else{
 
-            return redirect()->route("admin.login")->with("fail","E-posta veya Şifre Hatalı");;
+            return redirect()->route("admin.login")
+                ->with("fail","E-posta veya Şifre Hatalı");
         }
 
     }

@@ -7,4 +7,4 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-<img align="right" src="https://www.hizliresim.com/6x5mrzm" class="width:50;" alt="ahevr" />
+<img src="https://www.hizliresim.com/6x5mrzm" class="width:50;"/>

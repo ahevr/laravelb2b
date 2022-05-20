@@ -20,13 +20,13 @@
 @section("content")
 
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-4">
                 <div class="header">
                     <h4 class="card-title">Profilim</h4>
                 </div>
                 <br>
                 <div class="card">
-                    <div class="card-body py-4 px-5">
+                    <div class="card-body">
                         <div class="d-flex align-items-center">
                             <div class="avatar avatar-xl">
                                 <img src="{{asset("app/admin")}}/images/faces/1.jpg" alt="Face 1">
@@ -36,6 +36,13 @@
                                 <h6 class="text-muted mb-0">{{Auth::user()->email}}</h6>
                             </div>
                         </div>
+                        <div class="d-flex justify-content-end mt-3">
+                            <form action="{{route("admin.logout")}}" method="post">
+                                @csrf
+                                <button type="submit" class="btn btn-outline-primary">Çıkış Yap</button>
+                            </form>
+                        </div>
+
                     </div>
                 </div>
             </div>

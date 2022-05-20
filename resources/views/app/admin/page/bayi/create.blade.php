@@ -20,6 +20,7 @@
     </div>
 @endsection
 @section("content")
+
     @if (count($errors) > 0)
         <div class="alert alert-danger">
             <ol>
@@ -29,22 +30,19 @@
             </ol>
         </div>
     @endif
+
     <section class="section">
         <div class="row">
             <form action="{{route("admin.bayi.store")}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="card">
+                    <div class="card-header">
+                        <h4>Bayi Bilgileri</h4>
+                    </div>
                     <div class="card-body">
+
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-4">
-                                    <label for="product_name" class="form-label">Bayi Adı</label>
-                                    <input type="text" class="form-control" name="bayi_adi"
-                                           placeholder="Bayi Adı"
-                                           value="{{old("bayi_adi")}}"/>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <div class="mb-4">
                                     <label for="product_name" class="form-label">Bayi Kodu</label>
                                     <input type="text" class="form-control" name="bayi_kodu"
@@ -52,7 +50,15 @@
                                            value="{{old("bayi_kodu")}}"/>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-3">
+                                <div class="mb-4">
+                                    <label for="product_name" class="form-label">Bayi Adı</label>
+                                    <input type="text" class="form-control" name="bayi_adi"
+                                           placeholder="Bayi Adı"
+                                           value="{{old("bayi_adi")}}"/>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
                                 <div class="mb-4">
                                     <label for="product_name" class="form-label">Bayi Email</label>
                                     <input type="text" class="form-control" name="bayi_email"
@@ -60,7 +66,7 @@
                                            value="{{old("bayi_email")}}"/>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <div class="mb-4">
                                     <label for="product_name" class="form-label">Bayi Plasiyeri</label>
                                     <input type="text" class="form-control" name="bayi_plasiyeri"
@@ -68,16 +74,16 @@
                                            value="{{old("bayi_plasiyeri")}}"/>
                                 </div>
                             </div>
-
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="mb-4">
                                     <label for="product_name" class="form-label">Bayi Telefon</label>
-                                    <input type="text" class="form-control" name="bayi_telefon"
+                                    <input type="text" id="phone-mask" class="form-control" name="bayi_telefon"
                                            placeholder="Bayi Telefon"
                                            value="{{old("bayi_telefon")}}"/>
+
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <div class="mb-4">
                                     <label for="product_name" class="form-label">Bayi İl</label>
                                     <input type="text" class="form-control" name="bayi_il"
@@ -85,7 +91,7 @@
                                            value="{{old("bayi_il")}}"/>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <div class="mb-4">
                                     <label for="product_name" class="form-label">Bayi İlce</label>
                                     <input type="text" class="form-control" name="bayi_ilce"
@@ -93,7 +99,7 @@
                                            value="{{old("bayi_ilce")}}"/>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <div class="mb-4">
                                     <label for="product_name" class="form-label">Bayi Adres</label>
                                     <input type="text" class="form-control" name="bayi_adres"
@@ -101,8 +107,7 @@
                                            value="{{old("bayi_adres")}}"/>
                                 </div>
                             </div>
-
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <div class="mb-4">
                                     <label for="product_name" class="form-label">Bayi Mahalle</label>
                                     <input type="text" class="form-control" name="bayi_mahalle"
@@ -110,8 +115,6 @@
                                            value="{{old("bayi_mahalle")}}"/>
                                 </div>
                             </div>
-
-
                             <div class="col-md-3">
                                 <div class="mb-4">
                                     <label for="product_name" class="form-label">Bayi İsk-1</label>
@@ -152,8 +155,8 @@
                                            value="{{old("password")}}"/>
                                 </div>
                             </div>
-
                             <div class="col-md-12">
+                                <label for="product_name" class="form-label">Bayi Şifre Tekrar</label>
                                 <input class="form-control" type="text" name="password_confirmation" placeholder="Şifre Tekrar" required>
                                 @error('password_confirmation')
                                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>

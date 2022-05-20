@@ -29,7 +29,7 @@
                 <div class="card-title" style="float: right">
                     <a href="{{route("admin.bayi.create")}}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Yeni Oluştur</a>
                 </div>
-                <h4 class="card-title">Ürünler Listesi</h4>
+                <h4 class="card-title">Bayi Listesi</h4>
             </div>
             <div class="card-content">
                 <div class="card-body">

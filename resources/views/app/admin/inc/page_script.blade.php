@@ -11,6 +11,14 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 <script src="{{asset("app/admin")}}/vendors/summernote/summernote-lite.min.js"></script>
 <script src="{{asset("app/admin")}}/js/switchery.js"></script>
+<script src="https://unpkg.com/imask"></script>
+
+<script>
+    var phoneMask = IMask(
+        document.getElementById('phone-mask'), {
+            mask: '+{90}(000)000-00-00'
+        });
+</script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 

@@ -49,15 +49,12 @@ class BayiController extends Controller
         ]);
 
         $bayiRegister = new Bayi();
-
         $bayiRegister->fill($request->all());
         $bayiRegister->email_verified = 1;
         $bayiRegister->password =  Hash::make($request->password);
-        $bayiRegister->bayi_mahalle = $request->bayi_mahalle;
-
         $bayiRegister->save();
 
-        return back()->with("toast_success", "Kayıt İşleminiz Başarılı Bir Şekilde Tamamlandı.Eposta adresinize gelen maili onaylayladıktan sonra giriş yapabilirsiniz.");
+        return redirect("admin/bayi")->with("toast_success","$request->bayi_adi". " Adlı Bayi Başarılı Bir Şekilde Eklendi");
 
     }
 

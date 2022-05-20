@@ -66,14 +66,15 @@ class ProductController extends Controller
         $products->created_by      = Auth::guard("web")->id();
         $products->update_by       = 0;
 
-        if($request->hasfile('image')) :
-            $file = $request->file('image');
+        if($request->hasfile['image']) :
+            $file = $request->file['image'];
             $extenstion = $file->getClientOriginalExtension();
             $filename = time().'.'.$extenstion;
             $file->move('app/admin/uploads/urunler/', $filename);
             $products->image = $filename;
 
         endif;
+
 
         $products->save();
 

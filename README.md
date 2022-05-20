@@ -7,4 +7,8 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-<img src="https://www.hizliresim.com/6x5mrzm" class="width:50;"/>
+<img src="https://i.hizliresim.com/6x5mrzm.jpg" class="width:50;"/>
+<img src="https://i.hizliresim.com/7fcibhg.jpg" class="width:50;"/>
+<img src="https://i.hizliresim.com/q4iu1z4.jpg" class="width:50;"/>
+<img src="https://i.hizliresim.com/nt4ft7d.jpg" class="width:50;"/>
+<img src="https://i.hizliresim.com/9ia83yw.jpg" class="width:50;"/>

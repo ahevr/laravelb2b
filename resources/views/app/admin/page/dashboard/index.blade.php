@@ -20,7 +20,26 @@
 @section("content")
 
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-12">
+                <div class="header">
+                    <h4 class="card-title">Profilim</h4>
+                </div>
+                <br>
+                <div class="card">
+                    <div class="card-body py-4 px-5">
+                        <div class="d-flex align-items-center">
+                            <div class="avatar avatar-xl">
+                                <img src="{{asset("app/admin")}}/images/faces/1.jpg" alt="Face 1">
+                            </div>
+                            <div class="ms-3 name">
+                                <h5 class="font-bold">{{Auth::user()->name}}</h5>
+                                <h6 class="text-muted mb-0">{{Auth::user()->email}}</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
                 <div class="header">
                     <h4 class="card-title">Kategori Yönetimi</h4>
                     <small><b>Kategorilere Gitmek İçin <a href="{{route("admin.categories.index")}}">Tıklayınız</a> </b></small>
@@ -53,33 +72,18 @@
                     @endforeach
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <div class="card-body py-4 px-5">
-                        <div class="d-flex align-items-center">
-                            <div class="avatar avatar-xl">
-                                <img src="{{asset("app/admin")}}/images/faces/1.jpg" alt="Face 1">
-                            </div>
-                            <div class="ms-3 name">
-                                <h5 class="font-bold">{{Auth::user()->name}}</h5>
-                                <h6 class="text-muted mb-0">{{Auth::user()->email}}</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <hr>
 
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="header">
                     <h4 class="card-title">Ürün Yönetimi</h4>
                     <small><b>Ürünlere Gitmek İçin <a href="{{route("admin.products.index")}}">Tıklayınız</a> </b></small>
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="card">
                             <div class="card-body px-3 py-4-5">
                                 <div class="row">
@@ -98,14 +102,14 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="header">
                     <h4 class="card-title">Bayi Yönetimi</h4>
                     <small><b>Bayilere Gitmek İçin <a href="{{route("admin.bayi.index")}}">Tıklayınız</a> </b></small>
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="card">
                             <div class="card-body px-3 py-4-5">
                                 <div class="row">
@@ -124,14 +128,14 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="header">
                     <h4 class="card-title">Kullanıcı Yönetimi</h4>
                     <small><b>Kullanıcılara Gitmek İçin <a href="{{route("admin.users.index")}}">Tıklayınız</a> </b></small>
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="card">
                             <div class="card-body px-3 py-4-5">
                                 <div class="row">

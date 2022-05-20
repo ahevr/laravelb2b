@@ -55,64 +55,67 @@
                     </div>
                 </div>
             </div>
-
                 <a href="{{route("admin.products.deleteproductsAll")}}" class="btn btn-danger"> <i class="fa fa-trash"></i> Tüm Verileri Sil</a>
-
         </div>
     @else
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Ürünler Listesi</h4>
+                <h1 class="card-title">Ürünler Listesi</h1>
             </div>
             <div class="card-body">
-                <a class="btn btn-primary" href="{{route("admin.products.create")}}"><i class="fa-solid fa-plus"></i> Ürün Ekle</a>
-                <a class="btn btn-success" href="{{route('admin.products.file-export') }}"><i class="fa fa-file-excel"></i> Toplu Ürün İndir</a>
-                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-file-excel"></i>
-                    Toplu Ürün Yükle
-                </button>
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Toplu Ürün Yükleme</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form action="{{ route('admin.products.file-import') }}" method="post" enctype="multipart/form-data">
-                                    @csrf
-                                    <div class="form-group">
-                                        <label for="exampleFormControlFile1">Excel Yükle</label>
-                                        <input type="file" name="file" id="file"  class="form-control-file btn btn-success">
-                                        <br>
-                                    </div>
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
-                                    <input type="submit" name="submit" value="Yükle" class="btn btn-danger" />
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-
+                <div class="d-flex justify-content-center">
+                    <a class="btn btn-primary m-3" href="{{route("admin.products.create")}}"><i class="fa-solid fa-plus"></i> Ürün Ekle</a>
+                    <a class="btn btn-success  m-3" href="{{route('admin.products.file-export') }}"><i class="fa fa-file-excel"></i> Toplu Ürün İndir</a>
+                    <button type="button" class="btn btn-dark  m-3" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-file-excel"></i>
+                        Toplu Ürün Yükle
+                    </button>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Toplu Ürün Yükleme</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="{{ route('admin.products.file-import') }}" method="post" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="form-group">
+                                            <label for="exampleFormControlFile1">Excel Yükle</label>
+                                            <input type="file" name="file" id="file"  class="form-control-file btn btn-success">
+                                            <br>
+                                        </div>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                                        <input type="submit" name="submit" value="Yükle" class="btn btn-danger" />
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    @can("products-all-delete")
+                        <a href="{{route("admin.products.deleteproductsAll")}}" class="btn btn-danger  m-3"> <i class="fa fa-trash"></i> Tüm Verileri Sil</a>
+                    @endcan
                 </div>
-                @can("products-all-delete")
-                    <a href="{{route("admin.products.deleteproductsAll")}}" class="btn btn-danger"> <i class="fa fa-trash"></i> Tüm Verileri Sil</a>
-                @endcan
+
             </div>
             <div class="card-content">
             <div class="card-body">
                 <div class="table-responsive">
-                    <form action="{{route("admin.products.searchproducts")}}"  >
-                        <div class="card-title" style="float:right">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <input type="text" class="form-control" name="q" placeholder="Ürün Ara...">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-10 col-lg-8">
+                            <form action="{{route("admin.products.searchproducts")}}" class="card card-sm">
+                                <div class="card-title" style="float:right">
+                                    <div class="form-group position-relative has-icon-left">
+                                        <input type="text" class="form-control" name="q" placeholder="Ürün Adı veya Stok Kodu Ara...">
+                                        <div class="form-control-icon">
+                                            <i class="bi bi-search"></i>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
-                    </form>
+                    </div>
                     <table class="table table-lg table-responsive">
                         <thead>
                             <tr>

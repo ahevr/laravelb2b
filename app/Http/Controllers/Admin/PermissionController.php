@@ -43,27 +43,4 @@ class PermissionController extends Controller
         return redirect("admin/permission")->with("toast_success","$request->name". "İzin Başarılı Bir Şekilde Eklendi");
     }
 
-    public function edit($id){
-
-        $permission = Permission::findOrFail($id);
-
-        return view('app.admin.page.permissions.edit')
-            ->with("permission",$permission);
-
-    }
-
-    public function update(Request $request, $id){
-
-        $this->validate($request, [
-            'name' => 'required'
-        ]);
-
-        $permission = Permission::findOrFail($id);
-
-        $permission->name = $request->name;
-
-        $permission->update();
-
-        return back()->with("toast_success","$request->name". " Role Başarılı Bir Şekilde Güncellendi");
-    }
 }

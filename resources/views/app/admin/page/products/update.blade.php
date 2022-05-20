@@ -1,5 +1,5 @@
 @extends("app.admin.masterpage")
-@section("title","Ürün Ekle | B2B Ege Sedef Aydınlatma")
+@section("title","Ürün Güncelle | B2B Ege Sedef Aydınlatma")
 @section("pageHeading")
     <div class="page-title">
         <div class="row">

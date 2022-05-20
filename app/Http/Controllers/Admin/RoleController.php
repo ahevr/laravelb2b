@@ -86,9 +86,4 @@ class RoleController extends Controller
         return back()->with("toast_success","$request->name". " Rol Başarılı Bir Şekilde Güncellendi");
     }
 
-
-
-
-
-
 }

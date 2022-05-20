@@ -18,13 +18,14 @@
     </div>
 @endsection
 @section("content")
-    <div class="card">
+
         <div class="row">
             <div class="col-md-9">
-                <div class="card-header">
+                <div class="header">
                     <h4 class="card-title">Kategori Yönetimi</h4>
                     <small><b>Kategorilere Gitmek İçin <a href="{{route("admin.categories.index")}}">Tıklayınız</a> </b></small>
                 </div>
+                <br>
                 <div class="row">
                     @foreach($categories as $rowCountCategory)
                         <div class="col-6 col-lg-3 col-md-6">
@@ -39,14 +40,11 @@
                                         </div>
                                         <div class="col-md-8">
                                             <h6 class="text-muted font-semibold">{{$rowCountCategory->name}}</h6>
-
                                             @if($rowCountCategory->category_id->count() > 0 )
-                                                <h6 class="font-extrabold mb-0">{{$rowCountCategory->category_id->count()}} Adet  </h6>
+                                                <h6 class="font-extrabold mb-0">{{$rowCountCategory->category_id->count()}} Adet Ürün </h6>
                                             @else
                                                 <div class="price-new">Veri Yok !!</div>
                                             @endif
-
-
                                         </div>
                                     </div>
                                 </div>
@@ -72,20 +70,22 @@
             </div>
         </div>
         <hr>
+
         <div class="row">
-            <div class="col-md-9">
-                <div class="card-header">
+            <div class="col-md-4">
+                <div class="header">
                     <h4 class="card-title">Ürün Yönetimi</h4>
                     <small><b>Ürünlere Gitmek İçin <a href="{{route("admin.products.index")}}">Tıklayınız</a> </b></small>
                 </div>
+                <br>
                 <div class="row">
-                    <div class="col-6 col-lg-3 col-md-6">
+                    <div class="col-md-6">
                         <div class="card">
                             <div class="card-body px-3 py-4-5">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <div class="stats-icon purple">
-                                            <i class="iconly-boldShow"></i>
+                                        <div class="stats-icon white">
+                                            <i class="fa-solid fa-box"></i>
                                         </div>
                                     </div>
                                     <div class="col-md-8">
@@ -98,6 +98,57 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-4">
+                <div class="header">
+                    <h4 class="card-title">Bayi Yönetimi</h4>
+                    <small><b>Bayilere Gitmek İçin <a href="{{route("admin.bayi.index")}}">Tıklayınız</a> </b></small>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body px-3 py-4-5">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="stats-icon white">
+                                            <i class="fa-solid fa-box"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h6 class="text-muted font-semibold">Toplam Bayi</h6>
+                                        <h6 class="font-extrabold mb-0">{{$bayiCount}} Adet</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="header">
+                    <h4 class="card-title">Kullanıcı Yönetimi</h4>
+                    <small><b>Kullanıcılara Gitmek İçin <a href="{{route("admin.users.index")}}">Tıklayınız</a> </b></small>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body px-3 py-4-5">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="stats-icon white">
+                                            <i class="fa-solid fa-box"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h6 class="text-muted font-semibold">Toplam Kullanıcı</h6>
+                                        <h6 class="font-extrabold mb-0">{{$userCount}} Adet</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
 @endsection

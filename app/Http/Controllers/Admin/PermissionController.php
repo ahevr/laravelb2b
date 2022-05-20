@@ -43,7 +43,6 @@ class PermissionController extends Controller
         return redirect("admin/permission")->with("toast_success","$request->name". "İzin Başarılı Bir Şekilde Eklendi");
     }
 
-
     public function edit($id){
 
         $permission = Permission::findOrFail($id);
@@ -67,9 +66,4 @@ class PermissionController extends Controller
 
         return back()->with("toast_success","$request->name". " Role Başarılı Bir Şekilde Güncellendi");
     }
-
-
-
-
-
 }

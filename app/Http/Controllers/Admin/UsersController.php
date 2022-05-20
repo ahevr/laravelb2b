@@ -12,8 +12,8 @@ use Spatie\Permission\Models\Role;
 class UsersController extends Controller
 {
 
-    function __construct()
-    {
+    function __construct(){
+
         $this->middleware('permission:user-list|user-create|user-edit|user-delete', ['only' => ['user.index','user.store']]);
         $this->middleware('permission:user-create', ['only' => ['user.create','user.store']]);
         $this->middleware('permission:user-edit', ['only' => ['user.edit','user.update']]);
@@ -93,6 +93,7 @@ class UsersController extends Controller
 
         return back()->with("toast_success","$request->name". " Kullanıcı Başarılı Bir Şekilde Güncellendi");
     }
+
     public function delete($id){
 
         $users = User::findOrFail($id);

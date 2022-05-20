@@ -16,8 +16,8 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ProductController extends Controller
 {
-    function __construct()
-    {
+    function __construct(){
+
         $this->middleware('permission:products-list|products-create|products-edit|products-delete', ['only' => ['products.index','products.store']]);
         $this->middleware('permission:products-create', ['only' => ['products.create','products.store']]);
         $this->middleware('permission:products-edit', ['only' => ['products.edit','products.update']]);
@@ -193,10 +193,5 @@ class ProductController extends Controller
         return back();
 
     }
-
-
-
-
-
 
 }

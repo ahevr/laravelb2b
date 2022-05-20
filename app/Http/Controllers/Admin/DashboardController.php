@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\CategoriesModel;
 use App\Models\Admin\ProductModel;
+use App\Models\Bayi;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,9 +20,13 @@ class DashboardController extends Controller
 
         $productCount = ProductModel::count();
         $categories   = CategoriesModel::all();
+        $bayiCount    = Bayi::count();
+        $userCount    = User::count();
         return view("app.admin.page.dashboard.index")
             ->with("categories",$categories)
-            ->with("productCount",$productCount);
+            ->with("productCount",$productCount)
+            ->with("bayiCount",$bayiCount)
+            ->with("userCount",$userCount);
 
     }
 
@@ -56,6 +61,5 @@ class DashboardController extends Controller
 
         return redirect("admin/login")->with("toast_success","Çıkış Başarılı");
     }
-
 
 }

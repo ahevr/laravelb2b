@@ -49,6 +49,7 @@ class CategoriesController extends Controller
         return back()->with("toast_success","Kategori Başarılı Bir Şekilde Silindi");
 
     }
+
     public function deleteSub($id){
 
         $category = CategoriesModel::findOrFail($id);
@@ -58,8 +59,4 @@ class CategoriesController extends Controller
         return back()->with("toast_success","Alt Kategori Başarılı Bir Şekilde Silindi");
 
     }
-
-
-
-
 }

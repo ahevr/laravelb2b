@@ -18,6 +18,7 @@ class BayiController extends Controller
         return view("app.admin.page.bayi.index")
             ->with("bayi",$bayi);
     }
+
     public function create(){
 
         return view("app.admin.page.bayi.create");
@@ -59,7 +60,6 @@ class BayiController extends Controller
         return back()->with("toast_success", "Kayıt İşleminiz Başarılı Bir Şekilde Tamamlandı.Eposta adresinize gelen maili onaylayladıktan sonra giriş yapabilirsiniz.");
 
     }
-
 
     public function update(Request $request, $id){
 

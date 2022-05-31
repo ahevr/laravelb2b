@@ -67,7 +67,7 @@
                                         <div class="col-md-8">
                                             <h6 class="text-muted font-semibold">{{$rowCountCategory->name}}</h6>
                                             @if($rowCountCategory->category_id->count() > 0 )
-                                                <h6 class="font-extrabold mb-0">{{$rowCountCategory->category_id->count()}} Adet</h6>
+                                                <h6 class="font-extrabold mb-0">{{$rowCountCategory->category_id->count()}}Adet</h6>
                                             @else
                                                 <div class="price-new">Veri Yok !!</div>
                                             @endif

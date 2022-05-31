@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\BayiExport;
+use App\Exports\ProductExport;
 use App\Http\Controllers\Controller;
+use App\Imports\BayiImport;
+use App\Imports\ProductImport;
+use App\Models\Admin\ProductModel;
 use App\Models\Bayi;
 use App\Models\VerifyBayi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules\Password;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BayiController extends Controller
 {
@@ -62,7 +68,6 @@ class BayiController extends Controller
 
         $bayi = Bayi::findOrFail($id);
         $bayi->fill($request->all());
-        $bayi->bayi_isk2 = $request->bayi_isk2;
         $bayi->update();
         return back()->with("toast_success","$request->bayi_adi". " Adlı Bayi Başarılı Bir Şekilde Güncellendi");
 
@@ -77,4 +82,17 @@ class BayiController extends Controller
         return back()->with("toast_success","Bayi Başarılı Bir Şekilde Silindi");
 
     }
+
+    public function fileImport(Request $request){
+
+        Excel::import(new BayiImport,request()->file('file'));
+        return back();
+    }
+
+    public function fileExport(){
+
+        return Excel::download(new BayiExport, 'bayi-collection.xlsx');
+    }
+
 }
+

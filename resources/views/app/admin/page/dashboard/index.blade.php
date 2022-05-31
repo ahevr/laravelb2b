@@ -39,7 +39,7 @@
                         <div class="d-flex justify-content-end mt-3">
                             <form action="{{route("admin.logout")}}" method="post">
                                 @csrf
-                                <button type="submit" class="btn btn-outline-primary">Çıkış Yap</button>
+                                <button type="submit" class="btn btn-outline-primary">Çıkış Yaap</button>
                             </form>
                         </div>
 
@@ -81,9 +81,8 @@
             </div>
         </div>
         <hr>
-
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-12 col-lg-4 col-md-6">
                 <div class="header">
                     <h4 class="card-title">Ürün Yönetimi</h4>
                     <small><b>Ürünlere Gitmek İçin <a href="{{route("admin.products.index")}}">Tıklayınız</a> </b></small>
@@ -109,7 +108,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-12 col-lg-4 col-md-6">
                 <div class="header">
                     <h4 class="card-title">Bayi Yönetimi</h4>
                     <small><b>Bayilere Gitmek İçin <a href="{{route("admin.bayi.index")}}">Tıklayınız</a> </b></small>
@@ -135,7 +134,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-12 col-lg-4 col-md-6">
                 <div class="header">
                     <h4 class="card-title">Kullanıcı Yönetimi</h4>
                     <small><b>Kullanıcılara Gitmek İçin <a href="{{route("admin.users.index")}}">Tıklayınız</a> </b></small>
@@ -162,4 +161,50 @@
                 </div>
             </div>
         </div>
+        <hr>
+        <div class="row">
+            <div class="col-12 col-lg-6 col-md-6">
+                <div class="header">
+                    <h4 class="card-title">Ürün Yükleme Şablonları</h4>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="stats-icon white">
+                                            <i class="fa-solid fa-file-excel"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <h6 class="text-muted font-semibold">Excel İle Bayi Yükleme</h6>
+                                        <small>Örnek Bayi Şablonu <a href="{{asset("app/excel-upload/bayi-yükleme.xlsx")}}" download>İndir</a></small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="stats-icon white">
+                                            <i class="fa-solid fa-file-excel"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <h6 class="text-muted font-semibold">Excel İle Ürün Yükleme</h6>
+                                        <small>Örnek Ürün Şablonu <a href="{{asset("app/excel-upload/ürün-yükleme.xlsx")}}" download>İndir</a></small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 @endsection

@@ -56,7 +56,6 @@ class ProductController extends Controller
             "width"=> "required", "height"=> "required", "length"=> "required", "kg"=> "required",
             "warranty_period"=> "required", "brand"=> "required", "color"=> "required", "bulb"=> "required",
             "category_id"=> "required", "duy"=> "required",]);
-
         $products = new ProductModel();
         $products->fill($request->all());
         $products->product_url     = urlHelper::permalink($request->product_name);
@@ -65,21 +64,15 @@ class ProductController extends Controller
         $products->isFyt           = 1;
         $products->created_by      = Auth::guard("web")->id();
         $products->update_by       = 0;
-
         if($request->hasfile['image']) :
             $file = $request->file['image'];
             $extenstion = $file->getClientOriginalExtension();
             $filename = time().'.'.$extenstion;
             $file->move('app/admin/uploads/urunler/', $filename);
             $products->image = $filename;
-
         endif;
-
-
         $products->save();
-
         return redirect("admin/products")->with("toast_success","$request->product_name". " Adlı Ürün Başarılı Bir Şekilde Eklendi");
-
     }
 
     public function edit($id){

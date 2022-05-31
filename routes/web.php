@@ -41,6 +41,7 @@ Route::group(["namespace"=>"site","as" => "site."],function (){
     Route::middleware(["auth:bayi","is_uye_verify_email"])->group(function (){
 
         Route::get ("/","HomePageController@index")->name("index");
+        Route::post("/logout", 'HomePageController@logout')->name('logout');
 
 
     });
@@ -125,6 +126,11 @@ Route::group(["namespace"=>"Admin","prefix"=>"admin","as" => "admin."],function 
             Route::get ("/delete/{id}","BayiController@delete")->name("delete");
             Route::get ("/edit/{id}","BayiController@edit")->name("edit");
             Route::post("/update/{id}","BayiController@update")->name("update");
+
+            Route::get("/file-export", "BayiController@fileExport")->name("file-export");
+            Route::post("/file-import", "BayiController@fileImport")->name('file-import');
+
+            Route::get ("/search", "SearchBayiController@index")->name("searchbayi");
         });
 
 

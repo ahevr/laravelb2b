@@ -17,6 +17,13 @@ use Illuminate\Validation\Rules\Password;
 class HomePageController extends Controller
 {
 
+    public function index(){
+
+        return view("app.site.homepage");
+
+    }
+
+
     public function forgetShow(){
 
         return view("auth.forgot-password");
@@ -87,7 +94,6 @@ class HomePageController extends Controller
 
         }
 
-
     }
 
     public function verify(Request $request){
@@ -117,6 +123,8 @@ class HomePageController extends Controller
 
     }
 
+
+
     public function check(Request $request){
 
         $request->validate([
@@ -128,7 +136,8 @@ class HomePageController extends Controller
 
         if (Auth::guard("bayi")->attempt($creds)){
 
-            return redirect()->route("site.index");
+            return redirect()->route("site.index")
+                ->with("toast_info","Hoş Geldiniz"." ".Auth::guard("bayi")->user()->bayi_adi);
 
         } else{
 
@@ -141,6 +150,13 @@ class HomePageController extends Controller
 
         return view("auth.uyeLogin");
 
+    }
+
+    public function logout(){
+
+        Auth::guard("bayi")->logout();
+
+        return redirect("/login")->with("toast_success","Çıkış Başarılı");
     }
 
     public function register(){
@@ -213,10 +229,6 @@ class HomePageController extends Controller
 
     }
 
-    public function index(){
 
-        return view("app.site.homepage");
-
-    }
 
 }

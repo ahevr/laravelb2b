@@ -39,7 +39,7 @@
                         <div class="d-flex justify-content-end mt-3">
                             <form action="{{route("admin.logout")}}" method="post">
                                 @csrf
-                                <button type="submit" class="btn btn-outline-primary">Çıkış Yappp</button>
+                                <button type="submit" class="btn btn-outline-primary">Çıkış Yap</button>
                             </form>
                         </div>
 

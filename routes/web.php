@@ -12,15 +12,16 @@ use RealRashid\SweetAlert\Facades\Alert;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
+|
 */
-//Route::group(["namespace"=>"site","as" => "site."],function (){
-//
-//    Route::get ("/","HomePageController@index")->name("index");
-//
-//});
+
 
 
 Route::group(["namespace"=>"site","as" => "site."],function (){
+
+//    Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
+
+    Route::get("lang/{lang}","LanguageController@switchLang")->name("lang.switch");
 
     Route::middleware(["guest:bayi"])->group(function (){
 
@@ -35,14 +36,13 @@ Route::group(["namespace"=>"site","as" => "site."],function (){
         Route::get("/password/reset/{token}","HomePageController@showResetForm")->name("resetPassForm");
         Route::post("/password/resetpw","HomePageController@resetpw")->name("resetpw");
 
-
     });
 
     Route::middleware(["auth:bayi","is_uye_verify_email"])->group(function (){
 
+
         Route::get ("/","HomePageController@index")->name("index");
         Route::post("/logout", 'HomePageController@logout')->name('logout');
-
 
     });
 
@@ -62,6 +62,8 @@ Route::group(["namespace"=>"Admin","prefix"=>"admin","as" => "admin."],function 
     });
 
     Route::middleware(["auth"])->group(function (){
+
+        Route::get("lang/{lang}","LanguageController@switchLang")->name("lang.switch");
 
         Route::get("/","DashboardController@index")->name("index");
 
@@ -104,11 +106,9 @@ Route::group(["namespace"=>"Admin","prefix"=>"admin","as" => "admin."],function 
             Route::get ("/isnew/{id}","ProductController@isnew")->name("isnewStatus");
             Route::get ("/edit/{id}","ProductController@edit")->name("edit");
             Route::post("/update/{id}","ProductController@update")->name("update");
-
             Route::get("/file-export", "ProductController@fileExport")->name("file-export");
             Route::post("/file-import", "ProductController@fileImport")->name('file-import');
             Route::get ("/deleteAll","ProductController@deleteAll")->name("deleteproductsAll");
-
             Route::get ("/search", "SearchController@index")->name("searchproducts");
         });
 
@@ -126,10 +126,8 @@ Route::group(["namespace"=>"Admin","prefix"=>"admin","as" => "admin."],function 
             Route::get ("/delete/{id}","BayiController@delete")->name("delete");
             Route::get ("/edit/{id}","BayiController@edit")->name("edit");
             Route::post("/update/{id}","BayiController@update")->name("update");
-
             Route::get("/file-export", "BayiController@fileExport")->name("file-export");
             Route::post("/file-import", "BayiController@fileImport")->name('file-import');
-
             Route::get ("/search", "SearchBayiController@index")->name("searchbayi");
         });
 

@@ -18,11 +18,10 @@
     </div>
 @endsection
 @section("content")
-
         <div class="row">
             <div class="col-md-4">
                 <div class="header">
-                    <h4 class="card-title">Profilim</h4>
+                    <h4 class="card-title">{{__('messages.Profilim')}}</h4>
                 </div>
                 <br>
                 <div class="card">
@@ -34,6 +33,7 @@
                             <div class="ms-3 name">
                                 <h5 class="font-bold">{{Auth::user()->name}}</h5>
                                 <h6 class="text-muted mb-0">{{Auth::user()->email}}</h6>
+                                <span class="fi fi-gr"></span> <span class="fi fi-gr fis"></span>
                             </div>
                         </div>
                         <div class="d-flex justify-content-end mt-3">
@@ -206,5 +206,4 @@
                 </div>
             </div>
         </div>
-
 @endsection

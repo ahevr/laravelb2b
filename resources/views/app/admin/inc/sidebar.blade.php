@@ -16,14 +16,14 @@
                 <li class="sidebar-item {{(request()->is('/admin')) ? 'active' : ""}} ">
                     <a href="{{route("admin.index")}}" class='sidebar-link'>
                         <i class="fa-solid fa-house"></i>
-                        <span>Dashboard</span>
+                        <span>{{__('messages.Dasboard')}}</span>
                     </a>
                 </li>
 
                <li class="sidebar-item {{(request()->is('admin/products')) ? 'active' : ""}} ">
                    <a href="{{route("admin.products.index")}}" class='sidebar-link'>
                        <i class="fa-solid fa-box"></i>
-                       <span>Ürünler</span>
+                       <span>{{__('messages.Ürünler')}}</span>
                    </a>
                </li>
 
@@ -31,14 +31,14 @@
                 <li class="sidebar-item {{(request()->is('admin/categories')) ? 'active' : ""}} ">
                     <a href="{{route("admin.categories.index")}}" class='sidebar-link'>
                         <i class="fa-solid fa-book-open"></i>
-                        <span>Kategoriler</span>
+                        <span>{{__('messages.Kategoriler')}}</span>
                     </a>
                 </li>
                 @can('user-list')
                     <li class="sidebar-item {{(request()->is('admin/users')) ? 'active' : ""}} ">
                         <a href="{{route("admin.users.index")}}" class='sidebar-link'>
                             <i class="fa-solid fa-users"></i>
-                            <span>Kullanıcılar</span>
+                            <span>{{__('messages.Kullanıcılar')}}</span>
                         </a>
                     </li>
                 @endcan
@@ -47,7 +47,7 @@
                     <li class="sidebar-item {{(request()->is('admin/role')) ? 'active' : ""}} ">
                         <a href="{{route("admin.role.index")}}" class='sidebar-link'>
                             <i class="fa-solid fa-user"></i>
-                            <span>Roller</span>
+                            <span>{{__('messages.Roller')}}</span>
                         </a>
                     </li>
                 @endcan
@@ -56,7 +56,7 @@
                     <li class="sidebar-item {{(request()->is('admin/permission')) ? 'active' : ""}} ">
                         <a href="{{route("admin.permission.index")}}" class='sidebar-link'>
                             <i class="fa-solid fa-user-lock"></i>
-                            <span>İzinler</span>
+                            <span>{{__('messages.İzinler')}}</span>
                         </a>
                     </li>
                 @endcan
@@ -64,7 +64,7 @@
                 <li class="sidebar-item {{(request()->is('admin/bayi')) ? 'active' : ""}} ">
                     <a href="{{route("admin.bayi.index")}}" class='sidebar-link'>
                         <i class="fa-solid fa-users-line"></i>
-                        <span>Bayiler</span>
+                        <span>{{__('messages.Bayiler')}}</span>
                     </a>
                 </li>
 

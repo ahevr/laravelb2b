@@ -1,11 +1,11 @@
 <?php
 return [
     'en' => [
-        'display' => 'English',
+        'display' => 'EN',
         'flag-icon' => 'us'
     ],
     'tr' => [
-        'display' => 'Türkçe',
+        'display' => 'TR',
         'flag-icon' => 'tr'
     ],
 ];

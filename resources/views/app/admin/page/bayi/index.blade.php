@@ -34,10 +34,23 @@
             <div class="card-content">
                 <div class="card-body">
                     <div class="table-responsive">
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-md-10 col-lg-8">
+                                <form action="{{route("admin.bayi.searchbayi")}}" class="card card-sm">
+                                    <div class="card-title" style="float:right">
+                                        <div class="form-group position-relative has-icon-left">
+                                            <input type="text" class="form-control" name="q" placeholder="Bayi Adı Ara...">
+                                            <div class="form-control-icon">
+                                                <i class="bi bi-search"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                         <table class="table table-lg">
                             <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Bayi Adı</th>
                                 <th>Bayi Kodu</th>
                                 <th>Bayi İskontosu</th>
@@ -48,7 +61,6 @@
                             <tbody>
                             @foreach($bayi as $bayiRow)
                                 <tr>
-                                    <td>{{$bayiRow->id}}</td>
                                     <td>{{$bayiRow->bayi_adi}}</td>
                                     <td>{{$bayiRow->bayi_kodu}}</td>
                                     <td><b>{{$bayiRow->bayi_isk1}} +  {{$bayiRow->bayi_isk2}}</b></td>
@@ -68,6 +80,9 @@
                             @endforeach
                             </tbody>
                         </table>
+                        <ul class="pagination justify-content-end">
+                            {{$bayi->onEachSide(0)->links()}}
+                        </ul>
                     </div>
                 </div>
             </div>

@@ -131,6 +131,14 @@ Route::group(["namespace"=>"Admin","prefix"=>"admin","as" => "admin."],function 
             Route::get ("/search", "SearchBayiController@index")->name("searchbayi");
         });
 
+        Route::group(["prefix"=>"slider","as"=>"slider."],function() {
+            Route::get( "/","SliderController@index")->name("index");
+            Route::get ("/createForm","SliderController@create")->name("create");
+            Route::post("/store","SliderController@store")->name("store");
+            Route::get ("/delete/{id}","SliderController@delete")->name("delete");
+            Route::get ("/status/{id}","SliderController@status")->name("sliderStatus");
+        });
+
 
 
     });

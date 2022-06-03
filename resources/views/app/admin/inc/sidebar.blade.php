@@ -68,6 +68,13 @@
                     </a>
                 </li>
 
+                <li class="sidebar-item {{(request()->is('admin/slider')) ? 'active' : ""}} ">
+                    <a href="{{route("admin.slider.index")}}" class='sidebar-link'>
+                        <i class="fa-solid fa-images"></i>
+                        <span>Slider</span>
+                    </a>
+                </li>
+
 
             </ul>
         </div>

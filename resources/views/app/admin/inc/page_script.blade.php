@@ -13,6 +13,13 @@
 <script src="{{asset("app/admin")}}/js/switchery.js"></script>
 <script src="https://unpkg.com/imask"></script>
 
+
+<script>
+    $(".button_usage_btn").change(function () {
+        $(".button-inf-container").slideToggle();
+    })
+</script>
+
 <script>
     var phoneMask = IMask(
         document.getElementById('phone-mask'), {

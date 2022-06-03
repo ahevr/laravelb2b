@@ -4,7 +4,7 @@
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Yönetim Paneli</h3>
+                <h3>{{__('messages.Yönetim Paneli')}}</h3>
                 <p class="text-subtitle text-muted">Ege Sedef Aydınlatma b2b Yönetim Paneli</p>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
@@ -48,7 +48,7 @@
             </div>
             <div class="col-md-12">
                 <div class="header">
-                    <h4 class="card-title">Kategori Yönetimi</h4>
+                    <h4 class="card-title">{{__('messages.Kategori Yönetimi')}}</h4>
                     <small><b>Kategorilere Gitmek İçin <a href="{{route("admin.categories.index")}}">Tıklayınız</a> </b></small>
                 </div>
                 <br>
@@ -67,7 +67,7 @@
                                         <div class="col-md-8">
                                             <h6 class="text-muted font-semibold">{{$rowCountCategory->name}}</h6>
                                             @if($rowCountCategory->category_id->count() > 0 )
-                                                <h6 class="font-extrabold mb-0">{{$rowCountCategory->category_id->count()}}Adet</h6>
+                                                <h6 class="font-extrabold mb-0">{{$rowCountCategory->category_id->count()}} Adet</h6>
                                             @else
                                                 <div class="price-new">Veri Yok !!</div>
                                             @endif
@@ -84,7 +84,7 @@
         <div class="row">
             <div class="col-12 col-lg-4 col-md-6">
                 <div class="header">
-                    <h4 class="card-title">Ürün Yönetimi</h4>
+                    <h4 class="card-title">{{__('messages.Ürün Yönetimi')}}</h4>
                     <small><b>Ürünlere Gitmek İçin <a href="{{route("admin.products.index")}}">Tıklayınız</a> </b></small>
                 </div>
                 <br>
@@ -110,7 +110,7 @@
             </div>
             <div class="col-12 col-lg-4 col-md-6">
                 <div class="header">
-                    <h4 class="card-title">Bayi Yönetimi</h4>
+                    <h4 class="card-title">{{__('messages.Bayi Yönetimi')}}</h4>
                     <small><b>Bayilere Gitmek İçin <a href="{{route("admin.bayi.index")}}">Tıklayınız</a> </b></small>
                 </div>
                 <br>
@@ -136,7 +136,7 @@
             </div>
             <div class="col-12 col-lg-4 col-md-6">
                 <div class="header">
-                    <h4 class="card-title">Kullanıcı Yönetimi</h4>
+                    <h4 class="card-title">{{__('messages.Kullanıcı Yönetimi')}}</h4>
                     <small><b>Kullanıcılara Gitmek İçin <a href="{{route("admin.users.index")}}">Tıklayınız</a> </b></small>
                 </div>
                 <br>
@@ -165,7 +165,7 @@
         <div class="row">
             <div class="col-12 col-lg-6 col-md-6">
                 <div class="header">
-                    <h4 class="card-title">Ürün Yükleme Şablonları</h4>
+                    <h4 class="card-title">{{__('messages.Ürün Yükleme Şablonları')}}</h4>
                 </div>
                 <br>
                 <div class="row">

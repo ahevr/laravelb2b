@@ -39,7 +39,7 @@
                                 <form action="{{route("admin.bayi.searchbayi")}}" class="card card-sm">
                                     <div class="card-title" style="float:right">
                                         <div class="form-group position-relative has-icon-left">
-                                            <input type="text" class="form-control" name="q" placeholder="Bayi Adı Ara...">
+                                            <input type="text" class="form-control" name="q" placeholder="Bayi Adı veya Bayi Kodu İle Ara...">
                                             <div class="form-control-icon">
                                                 <i class="bi bi-search"></i>
                                             </div>
@@ -59,25 +59,25 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($bayi as $bayiRow)
-                                <tr>
-                                    <td>{{$bayiRow->bayi_adi}}</td>
-                                    <td>{{$bayiRow->bayi_kodu}}</td>
-                                    <td><b>{{$bayiRow->bayi_isk1}} +  {{$bayiRow->bayi_isk2}}</b></td>
-                                    <td><b>{{$bayiRow->bayi_kdv}}</b></td>
-                                    <td>
-                                        <button
-                                            data-url="{{route("admin.bayi.delete",$bayiRow)}}"
-                                            class="btn btn-danger silButton">
-                                            <i class="fa-solid fa-trash"></i>
-                                        </button>
-                                        <a href="{{route("admin.bayi.edit",$bayiRow)}}"
-                                           class="btn btn-primary">
-                                            <i class="fa-solid fa-edit"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            @endforeach
+                                @foreach($bayi as $bayiRow)
+                                    <tr>
+                                        <td>{{$bayiRow->bayi_adi}}</td>
+                                        <td>{{$bayiRow->bayi_kodu}}</td>
+                                        <td><b>{{$bayiRow->bayi_isk1}} + {{$bayiRow->bayi_isk2}}</b></td>
+                                        <td><b>{{$bayiRow->bayi_kdv}}</b></td>
+                                        <td>
+                                            <button
+                                                data-url="{{route("admin.bayi.delete",$bayiRow)}}"
+                                                class="btn btn-danger silButton">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                            <a href="{{route("admin.bayi.edit",$bayiRow)}}"
+                                               class="btn btn-primary">
+                                                <i class="fa-solid fa-edit"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                         <ul class="pagination justify-content-end">

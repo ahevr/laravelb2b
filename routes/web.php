@@ -14,7 +14,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 |
 |
 */
-
+//ola//
 
 
 Route::group(["namespace"=>"site","as" => "site."],function (){
@@ -126,9 +126,9 @@ Route::group(["namespace"=>"Admin","prefix"=>"admin","as" => "admin."],function 
             Route::get ("/delete/{id}","BayiController@delete")->name("delete");
             Route::get ("/edit/{id}","BayiController@edit")->name("edit");
             Route::post("/update/{id}","BayiController@update")->name("update");
-            Route::get("/file-export", "BayiController@fileExport")->name("file-export");
-            Route::post("/file-import", "BayiController@fileImport")->name('file-import');
-            Route::get ("/search", "SearchBayiController@index")->name("searchbayi");
+            Route::get("/file-export","BayiController@fileExport")->name("file-export");
+            Route::post("/file-import","BayiController@fileImport")->name('file-import');
+            Route::get ("/search","SearchBayiController@index")->name("searchbayi");
         });
 
         Route::group(["prefix"=>"slider","as"=>"slider."],function() {

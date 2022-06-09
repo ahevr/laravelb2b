@@ -49,9 +49,7 @@
                                 <input type="submit" name="submit" value="Yükle" class="btn btn-danger" />
                             </form>
                         </div>
-                        <div class="modal-footer">
-
-                        </div>
+                        <div class="modal-footer"></div>
                     </div>
                 </div>
             </div>
@@ -97,7 +95,6 @@
                         <a href="{{route("admin.products.deleteproductsAll")}}" class="btn btn-danger  m-3"> <i class="fa fa-trash"></i> Tüm Verileri Sil</a>
                     @endcan
                 </div>
-
             </div>
             <div class="card-content">
             <div class="card-body">
@@ -172,7 +169,6 @@
                                     <a href="{{route("admin.products.edit",$productRow)}}"
                                        class="btn btn-primary">
                                         <i class="fa-solid fa-edit"></i>
-                                    </a>
                                     </a>
                                 </td>
                             </tr>

@@ -55,8 +55,12 @@
                                 @foreach($slider as $item)
                                     <tr>
                                         <td>{{$item->id}}</td>
-                                        <td><img src="{{asset("app/admin/uploads/slider")}}/{{$item->image}}" alt="{{$item->title}}" width="100"></td>
-{{--                                        <img src="{{asset("app/admin/uploads/urunler/".$productRow->image)}}" width="100" alt="{{$productRow->product_name}}">--}}
+                                        <td>
+                                            <img
+                                                src="{{asset("app/admin/uploads/slider")}}/{{$item->image}}"
+                                                alt="{{$item->title}}"
+                                                width="200">
+                                        </td>
                                         <td>{{$item->title}}</td>
                                         <td>{{$item->desc}}</td>
                                         <td>

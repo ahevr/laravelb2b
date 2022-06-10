@@ -94,5 +94,7 @@ class BayiController extends Controller
         return Excel::download(new BayiExport, 'bayi-collection.xlsx');
     }
 
+
+
 }
 

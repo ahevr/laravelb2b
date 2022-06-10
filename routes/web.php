@@ -42,6 +42,7 @@ Route::group(["namespace"=>"site","as" => "site."],function (){
 
 
         Route::get ("/","HomePageController@index")->name("index");
+        Route::get("/urunler/{url}","HomePageController@detail")->name("urunDetay");
         Route::post("/logout", 'HomePageController@logout')->name('logout');
 
     });

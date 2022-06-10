@@ -120,6 +120,7 @@
                                 <th>Görsel</th>
                                 <th>Ürün Adı</th>
                                 <th>Fiyat</th>
+                                <th>Stok</th>
                                 <th>Aktif/Pasif</th>
                                 <th>Yeni/Eski</th>
                                 <th>Fiyat Göster</th>
@@ -137,6 +138,7 @@
                                 </td>
                                 <td>{{$productRow->product_name}}</td>
                                 <td><b>{{number_format($productRow->price,2,',','.') }}</b> TL</td>
+                                <td><b style="color:orangered">{{$productRow->stock_quantity}}</b> Adet</td>
                                 <td>
                                     <?php if ($productRow->isActive == "1"){ ?>
                                     <a href="{{route("admin.products.status",$productRow)}}" class="badge rounded-pill alert-success">Aktif</a>

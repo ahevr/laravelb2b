@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\ProductModel;
 use App\Models\Bayi;
 use App\Models\Uye;
 use App\Models\VerifyBayi;
@@ -19,10 +20,21 @@ class HomePageController extends Controller
 
     public function index(){
 
-        return view("app.site.homepage");
+        $products = ProductModel::orderBy("id","DESC")->IsActive()->paginate(12);
+
+        return view("app.site.homepage")
+            ->with("products",$products);
 
     }
 
+    public function detail($url){
+
+        $productDetailGet = ProductModel::where("product_url",$url)->IsActive()->firstOrFail();
+
+        return view("app.site.detail")
+            ->with("productDetailGet",$productDetailGet);
+
+    }
 
     public function forgetShow(){
 
@@ -228,6 +240,7 @@ class HomePageController extends Controller
 
 
     }
+
 
 
 

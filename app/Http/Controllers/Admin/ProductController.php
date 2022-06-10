@@ -172,7 +172,7 @@ class ProductController extends Controller
 
     public function fileExport(){
 
-        return Excel::download(new ProductExport, 'users-collection.xlsx');
+        return Excel::download(new ProductExport, 'product-collection.xlsx');
     }
 
     public function fileImport(Request $request){

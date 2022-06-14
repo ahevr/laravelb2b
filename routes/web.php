@@ -14,14 +14,12 @@ use RealRashid\SweetAlert\Facades\Alert;
 |
 |
 */
-//ola//
+
 
 
 Route::group(["namespace"=>"site","as" => "site."],function (){
 
-//    Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
 
-    Route::get("lang/{lang}","LanguageController@switchLang")->name("lang.switch");
 
     Route::middleware(["guest:bayi"])->group(function (){
 
@@ -40,10 +38,15 @@ Route::group(["namespace"=>"site","as" => "site."],function (){
 
     Route::middleware(["auth:bayi","is_uye_verify_email"])->group(function (){
 
-
         Route::get ("/","HomePageController@index")->name("index");
-        Route::get("/urunler/{url}","HomePageController@detail")->name("urunDetay");
         Route::post("/logout", 'HomePageController@logout')->name('logout');
+        Route::get ("/category/{url}","CategoryController@index")->name("kategori");
+
+
+        Route::group(["prefix"=>"urunler","as"=>"urunler."],function() {
+            Route::get ("/","ProductController@index")->name("index");
+            Route::get ("/{url}","ProductController@detail")->name("detail");
+        });
 
     });
 

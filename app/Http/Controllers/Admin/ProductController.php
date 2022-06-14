@@ -56,6 +56,7 @@ class ProductController extends Controller
             "width"=> "required", "height"=> "required", "length"=> "required", "kg"=> "required",
             "warranty_period"=> "required", "brand"=> "required", "color"=> "required", "bulb"=> "required",
             "category_id"=> "required", "duy"=> "required",]);
+
         $products = new ProductModel();
         $products->fill($request->all());
         $products->product_url     = urlHelper::permalink($request->product_name);

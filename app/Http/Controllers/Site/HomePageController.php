@@ -20,21 +20,11 @@ class HomePageController extends Controller
 
     public function index(){
 
-        $products = ProductModel::orderBy("id","DESC")->IsActive()->paginate(12);
+        return view("app.site.page.home.homepage");
 
-        return view("app.site.homepage")
-            ->with("products",$products);
 
     }
 
-    public function detail($url){
-
-        $productDetailGet = ProductModel::where("product_url",$url)->IsActive()->firstOrFail();
-
-        return view("app.site.detail")
-            ->with("productDetailGet",$productDetailGet);
-
-    }
 
     public function forgetShow(){
 

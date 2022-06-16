@@ -1,5 +1,5 @@
 @extends("app.site.sitemasterpage")
-@section('title', "Ürünler")
+@section('title',  e(strip_tags(trim($categoriess->name))) )
 @section("content")
     <div class="holder breadcrumbs-wrap mt-0">
         <div class="container">

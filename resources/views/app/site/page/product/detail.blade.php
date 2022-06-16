@@ -36,15 +36,15 @@
                                         </span>
                                     </div>
                                 </div>
-                                <div class="prd-block_label-sale-squared justify-content-center align-items-center">
-                                    <span>
-                                        @if($productDetailGet->isNew > 0)
+                                @if($productDetailGet->isNew > 0)
+                                    <div class="prd-block_label-sale-squared justify-content-center align-items-center">
+                                        <span>
                                             <div class="label-new">
                                                 <span>Yeni Ürün</span>
                                             </div>
-                                        @endif
-                                    </span>
-                                </div>
+                                        </span>
+                                    </div>
+                                @endif
                             </div>
                             <div class="prd-block_main-image-links">
                                 <a href="{{asset("app/admin/uploads/urunler/".$productDetailGet->image)}}" class="prd-block_zoom-link"><i class="icon-zoom-in"></i></a>
@@ -70,16 +70,16 @@
                             <div class="prd-block_price prd-block_price--style2">
                                 <div class="prd-block_price--actual">
                                     <?php
-                                    $isk1 = $productDetailGet->total_price * Auth::guard("bayi")->user()->bayi_isk1 / 100 ;
-                                    $isk2 = $productDetailGet->total_price - $isk1;
-                                    $indirimHesapla2 = $isk2 * Auth::guard("bayi")->user()->bayi_isk2 / 100 ;
-                                    $genelToplam2 = $isk2 - $indirimHesapla2;
-                                    $kdv = $genelToplam2 * Auth::guard("bayi")->user()->bayi_kdv ;
+                                        $isk1 = $productDetailGet->total_price * Auth::guard("bayi")->user()->bayi_isk1 / 100 ;
+                                        $isk2 = $productDetailGet->total_price - $isk1;
+                                        $indirimHesapla2 = $isk2 * Auth::guard("bayi")->user()->bayi_isk2 / 100 ;
+                                        $genelToplam2 = $isk2 - $indirimHesapla2;
+                                        $kdv = $genelToplam2 * Auth::guard("bayi")->user()->bayi_kdv ;
                                     ?>
-                                    {{ number_format($kdv,2,',','.')}}TL
+                                    {{ number_format($kdv,2,',','.')}} TL
                                 </div>
                                 <div class="prd-block_price-old-wrap">
-                                    <span class="prd-block_price--old">{{number_format($productDetailGet->total_price,2,',','.') }} TL</span>
+                                    <span class="prd-block_price--old"><small>Liste Fiyatı </small>{{number_format($productDetailGet->total_price,2,',','.') }} TL</span>
                                     <span class="prd-block_price--text">İSK: {{Auth::guard("bayi")->user()->bayi_isk1 ." + ".Auth::guard("bayi")->user()->bayi_isk2}}<small> + <b>KDV</b></small></span>
                                 </div>
                             </div>
@@ -138,24 +138,39 @@
                                 <p>Malzeme: <span>{{$productDetailGet->material}}</span></p></div>
                         </div>
                         <div class="order-0 order-md-100">
-                            <form method="post" action="#">
-                                <div class="prd-block_actions prd-block_actions--wishlist">
-                                    <div class="prd-block_qty">
-                                        <div class="qty qty-changer">
-                                            <button class="decrease js-qty-button"></button>
-                                            <input type="number" class="qty-input" name="quantity" value="1" data-min="1" data-max="1000">
-                                            <button class="increase js-qty-button"></button>
+                            @if($productDetailGet->total_price > 0)
+                                <form method="post" action="{{route("site.card.sepetekle")}}">
+                                    @csrf
+                                    <div class="prd-block_actions prd-block_actions--wishlist">
+                                        <div class="btn-wrap">
+                                            <input type="hidden" name="id" value="{{$productDetailGet->id}}">
+
+                                                <button type="submit" class="btn btn--add-to-cart js-trigger-addtocart js-prd-addtocart">SEPETE EKLE</button>
+
+
+
+                                        </div>
+                                        <div class="btn-wishlist-wrap">
+                                            <a href="#" class="btn-add-to-wishlist ml-auto btn-add-to-wishlist--add js-add-wishlist" title="Add To Wishlist"><i class="icon-heart-stroke"></i></a>
+                                            <a href="#" class="btn-add-to-wishlist ml-auto btn-add-to-wishlist--off js-remove-wishlist" title="Remove From Wishlist"><i class="icon-heart-hover"></i></a>
                                         </div>
                                     </div>
+                                </form>
+                            @else
+
+                                <div class="prd-block_actions prd-block_actions--wishlist">
                                     <div class="btn-wrap">
-                                        <button class="btn btn--add-to-cart js-trigger-addtocart js-prd-addtocart">SEPETE EKLE</button>
+                                        <input type="hidden" name="id" value="{{$productDetailGet->id}}">
+                                        <button type="submit" class="btn btn--add-to-cart js-trigger-addtocart js-prd-addtocart dontAddToCart">SEPETE EKLE</button>
                                     </div>
                                     <div class="btn-wishlist-wrap">
                                         <a href="#" class="btn-add-to-wishlist ml-auto btn-add-to-wishlist--add js-add-wishlist" title="Add To Wishlist"><i class="icon-heart-stroke"></i></a>
                                         <a href="#" class="btn-add-to-wishlist ml-auto btn-add-to-wishlist--off js-remove-wishlist" title="Remove From Wishlist"><i class="icon-heart-hover"></i></a>
                                     </div>
                                 </div>
-                            </form>
+
+
+                            @endif
                         </div>
 
                     </div>

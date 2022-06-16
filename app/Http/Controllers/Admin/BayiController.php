@@ -94,6 +94,13 @@ class BayiController extends Controller
         return Excel::download(new BayiExport, 'bayi-collection.xlsx');
     }
 
+    public function deleteAll(){
+
+        Bayi::truncate();
+        return back();
+
+    }
+
 
 
 }

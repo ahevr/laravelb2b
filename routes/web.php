@@ -41,12 +41,32 @@ Route::group(["namespace"=>"site","as" => "site."],function (){
         Route::get ("/","HomePageController@index")->name("index");
         Route::post("/logout", 'HomePageController@logout')->name('logout');
         Route::get ("/category/{url}","CategoryController@index")->name("kategori");
+        Route::get ("/search","SearchController@index")->name("search");
 
 
         Route::group(["prefix"=>"urunler","as"=>"urunler."],function() {
             Route::get ("/","ProductController@index")->name("index");
             Route::get ("/{url}","ProductController@detail")->name("detail");
         });
+
+        // Sepet Route** //
+        Route::group(["prefix"=>"card","as"=>"card."],function() {
+            Route::get ('/sepet', 'CardController@index')->name('index');
+            Route::post('/sepetekle', 'CardController@add')->name('sepetekle');
+            Route::post('/sepetsil', 'CardController@destroy')->name('sepetsil');
+            Route::post('/sepetadetsil/{rowid}', 'CardController@delete')->name('sepetadetsil');
+            Route::put ('/sepetguncelle/{rowid}', 'CardController@update')->name('sepetguncelle');
+        });
+
+
+        // Siparişlerim Route** //
+        Route::group(["prefix"=>"order","as"=>"order."],function() {
+            Route::get ("/siparisler","OrderController@index")->name("index");
+            Route::post('/siparisekle', 'OrderController@add')->name('siparisekle');
+            Route::get( '/siparislerim/{id}', 'OrderController@siparisDashboard')->name('siparislerim');
+            Route::get( '/siparislerimdetay/{id}', 'OrderController@siparisDetayDashboard')->name('siparislerimDetay');
+        });
+
 
     });
 
@@ -133,6 +153,7 @@ Route::group(["namespace"=>"Admin","prefix"=>"admin","as" => "admin."],function 
             Route::get("/file-export","BayiController@fileExport")->name("file-export");
             Route::post("/file-import","BayiController@fileImport")->name('file-import');
             Route::get ("/search","SearchBayiController@index")->name("searchbayi");
+            Route::get ("/deleteAll","BayiController@deleteAll")->name("deleteproductsAll");
         });
 
         Route::group(["prefix"=>"slider","as"=>"slider."],function() {

@@ -164,6 +164,14 @@ Route::group(["namespace"=>"Admin","prefix"=>"admin","as" => "admin."],function 
             Route::get ("/status/{id}","SliderController@status")->name("sliderStatus");
         });
 
+        Route::group(["prefix"=>"orders","as"=>"orders."],function (){
+            Route::get("/","OrdersController@index")->name("index");
+            Route::get('/downloadPDF/{id}','OrdersController@downloadPDF')->name('downloadPDF');
+            Route::get("/detail/{id}","OrdersController@detail")->name("detail");
+        });
+
+
+
 
 
     });

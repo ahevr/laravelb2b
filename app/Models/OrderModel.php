@@ -10,4 +10,10 @@ class OrderModel extends Model
     protected $table = "order";
 
     protected $guarded = [];
+
+    public function bayi(){
+
+        return $this->belongsTo(Bayi::class);
+    }
+
 }

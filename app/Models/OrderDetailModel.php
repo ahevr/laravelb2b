@@ -21,4 +21,8 @@ class OrderDetailModel extends Model
 
         return $this->belongsTo(OrderModel::class);
     }
+    public function bayi(){
+
+        return $this->belongsTo(Bayi::class);
+    }
 }

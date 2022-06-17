@@ -75,6 +75,13 @@
                     </a>
                 </li>
 
+                <li class="sidebar-item {{(request()->is('admin/orders')) ? 'active' : ""}} ">
+                    <a href="{{route("admin.orders.index")}}" class='sidebar-link'>
+                        <i class="fa-solid fa-shopping-basket"></i>
+                        <span>Order</span>
+                    </a>
+                </li>
+
 
             </ul>
         </div>

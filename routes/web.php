@@ -65,6 +65,7 @@ Route::group(["namespace"=>"site","as" => "site."],function (){
             Route::post('/siparisekle', 'OrderController@add')->name('siparisekle');
             Route::get( '/siparislerim/{id}', 'OrderController@siparisDashboard')->name('siparislerim');
             Route::get( '/siparislerimdetay/{id}', 'OrderController@siparisDetayDashboard')->name('siparislerimDetay');
+            Route::get('/downloadPDF/{id}','OrderController@downloadPDF')->name('downloadPDF');
         });
 
 

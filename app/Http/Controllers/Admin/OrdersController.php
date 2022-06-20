@@ -37,7 +37,7 @@ class OrdersController extends Controller
 
         $pdf = PDF::loadView('app.admin.page.orders.pdf',compact('orders','sip'));
 
-        return $pdf->download('Sipariş.pdf');
+        return $pdf->download("SiparişNo: #SDF-".$orders->order_no."-".date("Y").".pdf");
 
     }
 

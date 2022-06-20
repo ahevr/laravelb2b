@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\CategoriesModel;
 use App\Models\OrderDetailModel;
 use App\Models\OrderModel;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -87,6 +88,18 @@ class OrderController extends Controller
             ->with("sip",$sip)
             ->with("data",$data)
             ->with("categories",$categories);
+
+    }
+
+    public function downloadPDF($id){
+
+        $orders = OrderModel::findOrFail($id);
+
+        $sip  = OrderDetailModel::where("order_id",$id)->get();
+
+        $pdf = PDF::loadView('app.site.page.siparisler.pdf',compact('orders','sip'));
+
+        return $pdf->download("SiparişNo: #SDF-".$orders->order_no."-".date("Y").".pdf");
 
     }
 

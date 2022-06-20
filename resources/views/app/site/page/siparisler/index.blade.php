@@ -28,6 +28,7 @@
                                     <th scope="col">Siparis Numarası</th>
                                     <th scope="col">Toplam Fiyat</th>
                                     <th scope="col">Detaylar</th>
+                                    <th scope="col">PDF</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -41,6 +42,7 @@
                                                 class="btn btn-sm btn-warning"><i class="icon-eye" aria-hidden="true"></i>
                                             </a>
                                         </td>
+                                        <td> <a href="{{route("site.order.downloadPDF",$row)}}"  class="btn btn-primary"><i class="fa-solid fa-file-pdf"></i></a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>

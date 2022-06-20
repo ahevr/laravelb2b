@@ -157,7 +157,11 @@
             <tr class="text-center">
                 <td><b class="text-success">{{$row->product->product_name}}</b></td>
                 <td>{{$row->adet}}</td>
-                <td><b class="text-danger">{{number_format($row->fiyat,2,',','.')}} TL</b></td>
+                <td>
+                    <b class="text-danger">
+                        {{number_format($row->fiyat,2,',','.')}} TL
+                    </b>
+                </td>
                 <td>{{$row->created_at}}</td>
             </tr>
         @endforeach
@@ -173,11 +177,13 @@
                         <p>Genel Toplam</p>
                     </div>
                     <div class="total-right w-15 float-left text-bold" align="right">
-                        @php($toplam = 0)
-                        @foreach($sip as $row)
-                            @php($toplam += $row->fiyat)
-                        @endforeach
-                        {{number_format($toplam,2,',','.')}} TL
+                        <p style="font-size: 12px">
+                            @php($toplam = 0)
+                                @foreach($sip as $row)
+                                    @php($toplam += $row->fiyat)
+                                @endforeach
+                            {{number_format($toplam,2,',','.')}} TL
+                        </p>
                         <p>18%</p>
                         <p>{{Auth::guard("bayi")->user()->bayi_isk1 ."+".Auth::guard("bayi")->user()->bayi_isk2}}</p>
                         <p>{{ number_format($row->order->total_price,2,',','.') }}</p>

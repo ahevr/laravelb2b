@@ -7,10 +7,12 @@ use App\Exports\ProductExport;
 use App\Http\Controllers\Controller;
 use App\Imports\BayiImport;
 use App\Imports\ProductImport;
+use App\Models\Admin\BayiCariModel;
 use App\Models\Admin\ProductModel;
 use App\Models\Bayi;
 use App\Models\VerifyBayi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules\Password;
@@ -99,6 +101,48 @@ class BayiController extends Controller
         Bayi::truncate();
         return back();
 
+    }
+
+    public function iskUpdate(Request $request){
+
+        DB::table('bayi')->update(['bayi_isk1' => $request->bayi_isk1]);
+
+        return back()->with("toast_success","Bayi Başarılı Bir Şekilde sdsds");
+    }
+    public function isk2Update(Request $request){
+
+        DB::table('bayi')->update(['bayi_isk2' => $request->bayi_isk2]);
+
+        return back()->with("toast_success","Bayi Başarılı Bir Şekilde sdsds");
+    }
+
+    public function cari($id){
+
+        $bayi = Bayi::findOrFail($id);
+        $data  = BayiCariModel::where('bayi_id', $id)->get();
+        return view("app.admin.page.bayi.cari")
+            ->with("bayi", $bayi)
+            ->with("data", $data);
+
+    }
+
+    public function cariSet(Request $request){
+
+        //TODO: validation eklenecek
+
+        $bayi =  new BayiCariModel();
+
+        $bayi->bayi_id = $request->id;
+        $bayi->fis_no = $request->fis_no;
+        $bayi->desc = $request->desc;
+        $bayi->vade_tarihi = $request->vade_tarihi;
+        $bayi->borc_tutari = $request->borc_tutari;
+        $bayi->alacak_tutari = $request->alacak_tutari;
+        $bayi->borc_bakiye = $request->borc_bakiye;
+        $bayi->alacak_bakiye = $request->alacak_bakiye;
+        $bayi->save();
+
+        return back()->with("toast_success","Cari Başarılı Bir Şekilde Eklendi");
     }
 
 

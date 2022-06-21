@@ -232,6 +232,7 @@
                 </li>
                 <li><button class="btn btn-outline-primary mt-1"><span>Hesap Bilgilerim</span><i class="icon-user2"></i></button></li>
                 <a class="btn btn-outline-primary mt-1" href="{{route("site.order.siparislerim",Auth::guard("bayi")->user()->id)}}" >Siparişlerim   <i class="icon-card-payment"></i></a>
+                <a class="btn btn-outline-primary mt-1" href="{{route("site.order.carim",Auth::guard("bayi")->user()->id)}}" >Cari Hesap   <i class="icon-card-payment"></i></a>
                 <a class="btn btn-outline-danger mt-1" href="{{route("site.card.index")}}" >Sepetim<i class="icon-basket"></i></a>
             </ul>
         </div>

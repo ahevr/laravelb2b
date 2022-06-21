@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\BayiCariModel;
 use App\Models\Admin\CategoriesModel;
 use App\Models\OrderDetailModel;
 use App\Models\OrderModel;
@@ -73,6 +74,21 @@ class OrderController extends Controller
             ->with("sip",$sip)
             ->with("data",$data)
             ->with("categories",$categories);
+
+    }
+
+    public function cariDashboard($id){
+
+            $cari  = BayiCariModel::where("bayi_id",$id)->get();
+
+            $data = BayiCariModel::where("bayi_id",$id)->first();
+
+            $categories = CategoriesModel::where('parent_id', '=', 0)->get();
+
+            return view("app.site.page.cari.index")
+                ->with("cari",$cari)
+                ->with("data",$data)
+                ->with("categories",$categories);
 
     }
 

@@ -22,7 +22,7 @@
     @if(count($bayi) == 0 )
         <div class="alert alert-danger text-center" role="alert">
             Herhangi bir kayıt bulunamadı. <a href="{{route("admin.bayi.create")}}" class="alert-link">Buradan</a> yeni bir kayıt oluşturabilirsiniz.
-            <a class="btn btn-primary" href="{{route("admin.bayi.create")}}"><i class="fa-solid fa-plus"></i> Ürün Ekle</a>
+            <a class="btn btn-primary" href="{{route("admin.bayi.create")}}"><i class="fa-solid fa-plus"></i> Bayi Ekle</a>
             <a class="btn btn-success" href="{{route('admin.bayi.file-export') }}"><i class="fa fa-file-excel"></i> Toplu Ürün İndir</a>
             <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-file-excel"></i>
                 Toplu Bayi Yükle
@@ -57,24 +57,40 @@
     @else
         <div class="card">
             <div class="card-header">
-                <div class="card-title" style="float: right">
-                    <a href="{{route("admin.bayi.create")}}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Yeni Oluştur</a>
-                </div>
                 <h4 class="card-title">Bayi Listesi</h4>
             </div>
+
+            <form action="{{route("admin.bayi.isk1Update")}}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group">
+                    <label for="exampleInputEmail1">isk güncelle</label>
+                    <input type="text" name="bayi_isk1" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+            <form action="{{route("admin.bayi.isk2Update")}}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group">
+                    <label for="exampleInputEmail1">isk2 güncelle</label>
+                    <input type="text" name="bayi_isk2" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
             <div class="card-content">
                 <div class="card-body">
                     <div class="d-flex justify-content-center">
-                        <a class="btn btn-primary m-3" href="{{route("admin.bayi.create")}}"><i class="fa-solid fa-plus"></i> Ürün Ekle</a>
-                        <a class="btn btn-success  m-3" href="{{route('admin.bayi.file-export') }}"><i class="fa fa-file-excel"></i> Toplu Ürün İndir</a>
+                        <a class="btn btn-primary m-3" href="{{route("admin.bayi.create")}}"><i class="fa-solid fa-plus"></i> Bayi Ekle</a>
+                        <a class="btn btn-success  m-3" href="{{route('admin.bayi.file-export') }}"><i class="fa fa-file-excel"></i> Toplu Bayi İndir</a>
                         <button type="button" class="btn btn-dark  m-3" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-file-excel"></i>
-                            Toplu Ürün Yükle
+                            Toplu Bayi Yükle
                         </button>
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Toplu Ürün Yükleme</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Toplu Bayi Yükleme</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -119,7 +135,6 @@
                                 <th>Bayi Adı</th>
                                 <th>Bayi Kodu</th>
                                 <th>Bayi İskontosu</th>
-                                <th>Bayi KDV</th>
                                 <th>İşlemler</th>
                             </tr>
                             </thead>
@@ -129,7 +144,6 @@
                                         <td>{{$bayiRow->bayi_adi}}</td>
                                         <td>{{$bayiRow->bayi_kodu}}</td>
                                         <td><b>{{$bayiRow->bayi_isk1}} + {{$bayiRow->bayi_isk2}}</b></td>
-                                        <td><b>{{$bayiRow->bayi_kdv}}</b></td>
                                         <td>
                                             <button
                                                 data-url="{{route("admin.bayi.delete",$bayiRow)}}"
@@ -139,6 +153,10 @@
                                             <a href="{{route("admin.bayi.edit",$bayiRow)}}"
                                                class="btn btn-primary">
                                                 <i class="fa-solid fa-edit"></i>
+                                            </a>
+                                            <a href="{{route("admin.bayi.cariForm",$bayiRow)}}"
+                                               class="btn btn-primary">
+                                                <i class="fa-solid fa-file-invoice"></i>
                                             </a>
                                         </td>
                                     </tr>

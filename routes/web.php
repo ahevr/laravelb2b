@@ -63,11 +63,15 @@ Route::group(["namespace"=>"site","as" => "site."],function (){
         Route::group(["prefix"=>"order","as"=>"order."],function() {
             Route::get ("/siparisler","OrderController@index")->name("index");
             Route::post('/siparisekle', 'OrderController@add')->name('siparisekle');
+
             Route::get( '/siparislerim/{id}', 'OrderController@siparisDashboard')->name('siparislerim');
+            Route::get( '/carim/{id}', 'OrderController@cariDashboard')->name('carim');
+
             Route::get( '/siparislerimdetay/{id}', 'OrderController@siparisDetayDashboard')->name('siparislerimDetay');
+            Route::get( '/carimdetay/{id}', 'OrderController@cariDetayDashboard')->name('carimDetay');
+
             Route::get('/downloadPDF/{id}','OrderController@downloadPDF')->name('downloadPDF');
         });
-
 
     });
 
@@ -155,6 +159,13 @@ Route::group(["namespace"=>"Admin","prefix"=>"admin","as" => "admin."],function 
             Route::post("/file-import","BayiController@fileImport")->name('file-import');
             Route::get ("/search","SearchBayiController@index")->name("searchbayi");
             Route::get ("/deleteAll","BayiController@deleteAll")->name("deleteproductsAll");
+
+            Route::get ( "/cariForm/{id}","BayiController@cari")->name("cariForm");
+            Route::post( "/cari/{id}","BayiController@cariSet")->name("cariPost");
+
+            Route::post("/isk1Update/","BayiController@iskUpdate")->name("isk1Update");
+            Route::post("/isk2Update/","BayiController@isk2Update")->name("isk2Update");
+
         });
 
         Route::group(["prefix"=>"slider","as"=>"slider."],function() {

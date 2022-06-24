@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Exports\ProductExport;
 use App\Helper\urlHelper;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Product\ProductStoreRequest;
 use App\Imports\ProductImport;
 use App\Models\Admin\CategoriesModel;
 use App\Models\Admin\ProductModel;
@@ -47,24 +48,12 @@ class ProductController extends Controller
 
     }
 
-    public function store(Request $request){
+    public function store(ProductStoreRequest $request){
 
-        $request->validate([
-            "product_name"=> "required|min:2|max:80","product_code"=> "required", "product_desc"=> "required",
-            "stock_status"=> "required", "stock_quantity"=> "required", "price"=> "required", "discount"=> "required",
-            "tax"=> "required", "usage_area"=> "required", "kol_sayisi"=> "required", "material"=> "required",
-            "width"=> "required", "height"=> "required", "length"=> "required", "kg"=> "required",
-            "warranty_period"=> "required", "brand"=> "required", "color"=> "required", "bulb"=> "required",
-            "category_id"=> "required", "duy"=> "required",]);
-
-        $products = new ProductModel();
-        $products->fill($request->all());
+        $data = $request->except('_token');
+        $products = ProductModel::create($data);
         $products->product_url     = urlHelper::permalink($request->product_name);
-        $products->isActive        = 1;
-        $products->isNew           = 1;
-        $products->isFyt           = 1;
         $products->created_by      = Auth::guard("web")->id();
-        $products->update_by       = 0;
         if($request->hasfile['image']) :
             $file = $request->file['image'];
             $extenstion = $file->getClientOriginalExtension();

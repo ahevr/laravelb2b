@@ -19,48 +19,60 @@
     </div>
 @endsection
 @section("content")
-
     @if(count($orders) == 0 )
         <div class="alert alert-info">
             <strong>Uyarı!</strong> Henüz sipariş yok.
     @else
-                <div class="card">
-                    <div class="card-header">
-                        <h1 class="card-title">Siparişler Listesi</h1>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-lg table-responsive">
-                                    <thead>
-                                        <th scope="col">Bayi Adı</th>
-                                        <th scope="col">Sipariş No</th>
-                                        <th scope="col">Toplam Fiyat</th>
-                                        <th scope="col">Sipariş Tarihi</th>
-                                        <th scope="col">Detaylar</th>
-                                        <th scope="col">PDF</th>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($orders as $row)
-                                        <tr>
-                                            <th scope="row">{{ substr($row->bayi->bayi_adi,0,30) }}...</th>
-                                            <th scope="row">#SDF-{{$row->order_no}}-{{date("Y")}}</th>
-                                            <td><b>{{number_format($row->total_price,2,',','.')}}</b> TL</td>
-                                            <td>{{$row->created_at}}</td>
-                                            <td>
-                                                <a href="{{route("admin.orders.detail",$row)}}"
-                                                   class="btn btn-primary"><i class="fa-solid fa-eye"></i>
-                                                </a>
-                                            </td>
-                                            <td> <a href="{{route("admin.orders.downloadPDF",$row)}}"  class="btn btn-primary"><i class="fa-solid fa-file-pdf"></i></a></td>
-                                        </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
+        <div class="card">
+            <div class="card-header">
+                <h1 class="card-title">Siparişler Listesi</h1>
+            </div>
+            <div class="card-content">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-md-10 col-lg-8">
+                                <form action="{{route("admin.orders.searchOrder")}}" class="card card-sm">
+                                    <div class="card-title" style="float:right">
+                                        <div class="form-group position-relative has-icon-left">
+                                            <input type="text" class="form-control" name="q" placeholder="Sipariş Numarası Ara...">
+                                            <div class="form-control-icon">
+                                                <i class="bi bi-search"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
+                        <table class="table table-lg table-responsive">
+                            <thead>
+                                <th scope="col">Bayi Adı</th>
+                                <th scope="col">Sipariş No</th>
+                                <th scope="col">Toplam Fiyat</th>
+                                <th scope="col">Sipariş Tarihi</th>
+                                <th scope="col">Detaylar</th>
+                                <th scope="col">PDF</th>
+                            </thead>
+                            <tbody>
+                            @foreach($orders as $row)
+                                <tr>
+                                    <th scope="row">{{ substr($row->bayi->bayi_adi,0,30) }}...</th>
+                                    <th scope="row">#SDF-{{$row->order_no}}-{{date("Y")}}</th>
+                                    <td><b>{{number_format($row->total_price,2,',','.')}}</b> TL</td>
+                                    <td>{{$row->created_at}}</td>
+                                    <td>
+                                        <a href="{{route("admin.orders.detail",$row)}}"
+                                           class="btn btn-primary"><i class="fa-solid fa-eye"></i>
+                                        </a>
+                                    </td>
+                                    <td> <a href="{{route("admin.orders.downloadPDF",$row)}}"  class="btn btn-primary"><i class="fa-solid fa-file-pdf"></i></a></td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
+            </div>
+        </div>
     @endif
-
 @endsection

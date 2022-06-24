@@ -60,9 +60,6 @@
                             <th width="20">Ürün Adı</th>
                             <th width="20">Sipariş Tarihi</th>
                             <th width="20">Liste Fiyatı</th>
-                            <th width="20">İsk</th>
-                            <th width="20">KDV</th>
-                            <th width="20">Toplam</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -72,37 +69,39 @@
                                     <td><b class="text-success"><a href="{{route("site.urunler.detail",$row->product->product_url)}}">{{$row->product->product_name}}</a></b></td>
                                     <td>{{$row->created_at}}</td>
                                     <td>{{number_format($row->fiyat,2,',','.') }} TL</td>
-                                    <td>{{Auth::guard("bayi")->user()->bayi_isk1 ."+". Auth::guard("bayi")->user()->bayi_isk2}}</td>
-                                    <td>18%</td>
-                                    <td>
-                                        <?php
-                                        $isk1 = $row->fiyat * Auth::guard("bayi")->user()->bayi_isk1 / 100 ;
-                                        $isk2 = $row->fiyat - $isk1;
-                                        $indirimHesapla2 = $isk2 * Auth::guard("bayi")->user()->bayi_isk2 / 100 ;
-                                        $genelToplam2 = $isk2 - $indirimHesapla2;
-                                        $kdv2 = $genelToplam2 * Auth::guard("bayi")->user()->bayi_kdv ;
-                                        ?>
-                                            {{ number_format($kdv2,2,',','.')}} TL
-                                    </td>
                                 </tr>
                             @endforeach
 
                         </tbody>
                         <tfoot>
-                            <td colspan="1"><b>İSKONTO:</b></td>
-                            <td>{{Auth::guard("bayi")->user()->bayi_isk1 ."+".Auth::guard("bayi")->user()->bayi_isk2 }}</td>
-                            <td colspan="1"><b>KDV:</b></td>
-                            <td>18%</td>
-                            <td colspan="2"><b>Toplam</b></td>
-                            <td><b>{{ number_format($row->order->total_price,2,',','.')}}</b>  TL</td>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td class="text-center"><b>İskonto</b></td>
+                                <td class="hidden-xs text-center">
+                                    <strong>{{$row->bayi_isk1 ."+".$row->bayi_isk2 }}</strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td class="text-center"><b>KDV</b></td>
+                                <td class="hidden-xs text-center">
+                                    <strong>18%</strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td class="text-center"><b>Toplam</b></td>
+                                <td class="hidden-xs text-center">
+                                    <strong>{{ number_format($row->order->total_price,2,',','.')}}</strong>
+                                </td>
+                            </tr>
                         </tfoot>
                     </table>
                 </div>
-
             </div>
-
         </div>
-
     @endforeach
-
 @endsection

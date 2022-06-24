@@ -147,6 +147,7 @@
     <table class="table w-100 mt-10">
         <tr>
 
+            <th class="w-50">Görsel</th>
             <th class="w-50">Ürün Adı</th>
             <th class="w-50">Adet</th>
             <th class="w-50">Liste Fiyatı</th>
@@ -155,6 +156,7 @@
 
         @foreach($sip as $row)
             <tr class="text-center">
+                <td><img src="{{public_path("app/admin/uploads/urunler/".$row->image)}}" width="80" alt=""> </td>
                 <td><b class="text-success">{{$row->product->product_name}}</b></td>
                 <td>{{$row->adet}}</td>
                 <td>
@@ -185,8 +187,8 @@
                             {{number_format($toplam,2,',','.')}} TL
                         </p>
                         <p>18%</p>
-                        <p>{{Auth::guard("bayi")->user()->bayi_isk1 ."+".Auth::guard("bayi")->user()->bayi_isk2}}</p>
-                        <p>{{ number_format($row->order->total_price,2,',','.') }}</p>
+                        <p>{{$row->bayi_isk1 ."+".$row->bayi_isk2}}</p>
+                        <p>{{number_format($row->order->total_price,2,',','.')}}</p>
                     </div>
                     <div style="clear: both;"></div>
                 </div>

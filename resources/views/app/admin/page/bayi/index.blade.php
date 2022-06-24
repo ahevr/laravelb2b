@@ -59,25 +59,6 @@
             <div class="card-header">
                 <h4 class="card-title">Bayi Listesi</h4>
             </div>
-
-            <form action="{{route("admin.bayi.isk1Update")}}" method="post" enctype="multipart/form-data">
-                @csrf
-                <div class="form-group">
-                    <label for="exampleInputEmail1">isk güncelle</label>
-                    <input type="text" name="bayi_isk1" class="form-control">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-
-            <form action="{{route("admin.bayi.isk2Update")}}" method="post" enctype="multipart/form-data">
-                @csrf
-                <div class="form-group">
-                    <label for="exampleInputEmail1">isk2 güncelle</label>
-                    <input type="text" name="bayi_isk2" class="form-control">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-
             <div class="card-content">
                 <div class="card-body">
                     <div class="d-flex justify-content-center">
@@ -127,6 +108,41 @@
                                         </div>
                                     </div>
                                 </form>
+                            </div>
+                        </div>
+                        <div class="form-group float-end">
+                            <span class="switch switch-icon">
+                                <label> İskonto Oranlarını Güncelle
+                                    <input type="checkbox" name="buton" class="button_usage_isk">
+                                    <span></span>
+                                </label>
+                            </span>
+                        </div>
+                        <div class="container button-isk-container">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <form action="{{route("admin.bayi.isk1Update")}}" method="post" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">İskonto 1</label>
+                                            <input type="number" name="bayi_isk1" class="form-control">
+                                            <small>İsk-1 oranını günceller</small>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary isk1update">Gönder</button>
+                                    </form>
+                                </div>
+                                <div class="col-md-6">
+                                    <form action="{{route("admin.bayi.isk2Update")}}" method="post" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">İskonto 2</label>
+                                            <input type="number" name="bayi_isk2" class="form-control">
+                                            <small>İsk-2 oranını günceller</small>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Gönder</button>
+
+                                    </form>
+                                </div>
                             </div>
                         </div>
                         <table class="table table-lg">

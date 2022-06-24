@@ -20,6 +20,21 @@
     })
 </script>
 
+
+<script>
+    $(".button_usage_isk").change(function () {
+        $(".button-isk-container").slideToggle();
+    })
+</script>
+
+
+
+
+
+
+
+
+
 <script>
     var phoneMask = IMask(
         document.getElementById('phone-mask'), {

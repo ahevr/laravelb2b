@@ -179,7 +179,7 @@
                         @endforeach
                         {{number_format($toplam,2,',','.')}} TL
                         <p>18%</p>
-                        <p>{{Auth::guard("bayi")->user()->bayi_isk1 ."+".Auth::guard("bayi")->user()->bayi_isk2}}</p>
+                        <p>{{$row->bayi_isk1 ."+".$row->bayi_isk2}}</p>
                         <p>{{ number_format($row->order->total_price,2,',','.') }}</p>
                     </div>
                     <div style="clear: both;"></div>

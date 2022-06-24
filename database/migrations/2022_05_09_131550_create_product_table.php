@@ -58,4 +58,6 @@ class CreateProductTable extends Migration
     {
         Schema::dropIfExists('product');
     }
+
+
 }

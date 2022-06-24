@@ -73,4 +73,15 @@ class Bayi extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public static function boot(){
+
+        parent::boot();
+
+        static::creating(function ($model) {
+
+            $model->email_verified = 1;
+        });
+
+    }
 }

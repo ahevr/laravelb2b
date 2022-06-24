@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Exports\BayiExport;
 use App\Exports\ProductExport;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Bayi\CariSetRequest;
 use App\Imports\BayiImport;
 use App\Imports\ProductImport;
 use App\Models\Admin\BayiCariModel;
@@ -58,7 +59,6 @@ class BayiController extends Controller
 
         $bayiRegister = new Bayi();
         $bayiRegister->fill($request->all());
-        $bayiRegister->email_verified = 1;
         $bayiRegister->password =  Hash::make($request->password);
         $bayiRegister->save();
 
@@ -107,13 +107,14 @@ class BayiController extends Controller
 
         DB::table('bayi')->update(['bayi_isk1' => $request->bayi_isk1]);
 
-        return back()->with("toast_success","Bayi Başarılı Bir Şekilde sdsds");
+        return back()->with("success","İskonto Oranları" ." "." <b>$request->bayi_isk1</b> "." ". "Olarak Başarılı Bir Şekilde Güncellendi");
     }
+
     public function isk2Update(Request $request){
 
         DB::table('bayi')->update(['bayi_isk2' => $request->bayi_isk2]);
 
-        return back()->with("toast_success","Bayi Başarılı Bir Şekilde sdsds");
+        return back()->with("success","İskonto Başarılı Bir Şekilde Güncellendi");
     }
 
     public function cari($id){
@@ -126,22 +127,12 @@ class BayiController extends Controller
 
     }
 
-    public function cariSet(Request $request){
-
-        //TODO: validation eklenecek
+    public function cariSet(CariSetRequest $request){
 
         $bayi =  new BayiCariModel();
-
+        $bayi->fill($request->all());
         $bayi->bayi_id = $request->id;
-        $bayi->fis_no = $request->fis_no;
-        $bayi->desc = $request->desc;
-        $bayi->vade_tarihi = $request->vade_tarihi;
-        $bayi->borc_tutari = $request->borc_tutari;
-        $bayi->alacak_tutari = $request->alacak_tutari;
-        $bayi->borc_bakiye = $request->borc_bakiye;
-        $bayi->alacak_bakiye = $request->alacak_bakiye;
         $bayi->save();
-
         return back()->with("toast_success","Cari Başarılı Bir Şekilde Eklendi");
     }
 

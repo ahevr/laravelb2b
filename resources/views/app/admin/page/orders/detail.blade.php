@@ -83,6 +83,7 @@
                                     <th width="20">Adet</th>
                                     <th width="20">Liste Fiyatı</th>
                                     <th width="20">İskonto</th>
+                                    <th width="20">KDV</th>
                                     <th width="20">Genel Toplam</th>
                                     <th width="20">Sipariş Tarihi</th>
                                 </tr>
@@ -95,25 +96,27 @@
                                         <td><b class="text-success">{{$row->product->product_name}}</b></td>
                                         <td>{{$row->adet}}</td>
                                         <td><b class="text-danger">{{number_format($row->fiyat,2,',','.') }} TL</b></td>
-                                        <td><b class="text-danger">{{$row->bayi->bayi_isk1 ."+".$row->bayi->bayi_isk2 }}</b></td>
+                                        <td><b class="text-danger">{{$row->bayi_isk1 ."+".$row->bayi_isk2 }}</b></td>
+                                        <td>18%</td>
                                         <td>
                                             <b class="text-danger">
                                                 <?php
-                                                $isk1 = $row->fiyat * Auth::guard("bayi")->user()->bayi_isk1 / 100 ;
+                                                $isk1 = $row->fiyat * $row->bayi_isk1 / 100 ;
                                                 $isk2 = $row->fiyat - $isk1;
-                                                $indirimHesapla2 = $isk2 * Auth::guard("bayi")->user()->bayi_isk2 / 100 ;
+                                                $indirimHesapla2 = $isk2 * $row->bayi_isk2 / 100 ;
                                                 $genelToplam2 = $isk2 - $indirimHesapla2;
-                                                $kdv2 = $genelToplam2 * Auth::guard("bayi")->user()->bayi_kdv ;
+                                                $kdv2 = $genelToplam2 * $row->bayi->bayi_kdv ;
                                                 ?>
                                                 {{ number_format($kdv2,2,',','.')}} TL
                                             </b>
                                         </td>
+
                                         <td>{{$row->created_at}}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                                 <tfoot>
-                                <td colspan="7"><b>Toplam</b></td>
+                                <td colspan="8"><b>Toplam</b></td>
                                 <td><b>{{ number_format($row->order->total_price,2,',','.')}}</b>  TL</td>
                                 </tfoot>
                             </table>

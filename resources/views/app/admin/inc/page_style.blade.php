@@ -19,5 +19,11 @@
         margin-bottom: 10px;
         border-radius: 5px;
     }
+    .button-isk-container{
+        display: none;
+        padding: 19px 60px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
 
 </style>

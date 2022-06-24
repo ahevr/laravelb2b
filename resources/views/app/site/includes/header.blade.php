@@ -127,7 +127,7 @@
                         <ul class="mmenu mmenu-js">
                             <li><a href="{{route("site.index")}}">Ana Sayfa</a></li>
                             <li><a href="{{route("site.urunler.index")}}">Ürünler</a></li>
-                            <li><a href="#">Kataloglar</a></li>
+                            <li><a href="https://egesedefavize.com/kataloglar">Kataloglar</a></li>
                             <li><a href="#">İletişim</a></li>
                             <li><a href="https://tahsilat.egesedefavize.com/">Ödeme Yap</a></li>
                         </ul>
@@ -208,7 +208,7 @@
                     <ul class="nav nav-level-1">
                         <li><a href="{{route("site.index")}}">Ana Sayfa</a></li>
                         <li><a href="{{route("site.urunler.index")}}">Ürünler</a></li>
-                        <li><a href="#">Kataloglar</a></li>
+                        <li><a href="https://egesedefavize.com/kataloglar">Kataloglar</a></li>
                         <li><a href="#">İletişim</a></li>
                         <li><a href="https://tahsilat.egesedefavize.com/">Ödeme Yap</a></li>
                     </ul>
@@ -230,7 +230,7 @@
                         </button>
                     </form>
                 </li>
-                <li><button class="btn btn-outline-primary mt-1"><span>Hesap Bilgilerim</span><i class="icon-user2"></i></button></li>
+                <a class="btn btn-outline-primary mt-1" href="{{route("site.hesabim.index",Auth::guard("bayi")->user()->id)}}" >Hesap Bilgilerim   <i class="icon-user2"></i></a>
                 <a class="btn btn-outline-primary mt-1" href="{{route("site.order.siparislerim",Auth::guard("bayi")->user()->id)}}" >Siparişlerim   <i class="icon-card-payment"></i></a>
                 <a class="btn btn-outline-primary mt-1" href="{{route("site.order.carim",Auth::guard("bayi")->user()->id)}}" >Cari Hesap   <i class="icon-card-payment"></i></a>
                 <a class="btn btn-outline-danger mt-1" href="{{route("site.card.index")}}" >Sepetim<i class="icon-basket"></i></a>

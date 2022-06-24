@@ -34,6 +34,8 @@ class OrderController extends Controller
         $input = $request->all();
         $input["order_no"] = rand(100000000,999999999);
         $input["bayi_id"] = Auth::guard("bayi")->id();
+        $input["bayi_isk1"] = Auth::guard("bayi")->user()->bayi_isk1;
+        $input["bayi_isk2"] = Auth::guard("bayi")->user()->bayi_isk2;
         $input["total_price"]  = $genelToplam2;
         OrderModel::create($input);
 
@@ -50,7 +52,9 @@ class OrderController extends Controller
                     "stock_quantity"     => $cartItem->options->stock_quantity,
                     "bayi_id"       => Auth::guard("bayi")->id(),
                     "order_id"      => $sonid,
-                    "category_id"      => $cartItem->options->category_id,
+                    "category_id"   => $cartItem->options->category_id,
+                    "bayi_isk1"     =>Auth::guard("bayi")->user()->bayi_isk1,
+                    "bayi_isk2"     =>Auth::guard("bayi")->user()->bayi_isk2,
                 ];
                 OrderDetailModel::create($input2);
             }
@@ -77,21 +81,6 @@ class OrderController extends Controller
 
     }
 
-    public function cariDashboard($id){
-
-            $cari  = BayiCariModel::where("bayi_id",$id)->get();
-
-            $data = BayiCariModel::where("bayi_id",$id)->first();
-
-            $categories = CategoriesModel::where('parent_id', '=', 0)->get();
-
-            return view("app.site.page.cari.index")
-                ->with("cari",$cari)
-                ->with("data",$data)
-                ->with("categories",$categories);
-
-    }
-
     public function siparisDetayDashboard($id){
 
         $data = OrderModel::where("id",$id)->get();
@@ -104,6 +93,21 @@ class OrderController extends Controller
             ->with("sip",$sip)
             ->with("data",$data)
             ->with("categories",$categories);
+
+    }
+
+    public function cariDashboard($id){
+
+            $cari  = BayiCariModel::where("bayi_id",$id)->get();
+
+            $data = BayiCariModel::where("bayi_id",$id)->first();
+
+            $categories = CategoriesModel::where('parent_id', '=', 0)->get();
+
+            return view("app.site.page.cari.index")
+                ->with("cari",$cari)
+                ->with("data",$data)
+                ->with("categories",$categories);
 
     }
 

@@ -17,6 +17,21 @@ class ProductModel extends Model
 
     }
 
+    public static function boot(){
+
+        parent::boot();
+
+        static::creating(function ($model) {
+
+            $model->isActive = 1;
+            $model->isNew = 1;
+            $model->isFyt = 1;
+            $model->update_by = 1;
+
+        });
+
+    }
+
 
     public function scopeIsActive($query){
 

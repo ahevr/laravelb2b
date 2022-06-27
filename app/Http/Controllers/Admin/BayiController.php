@@ -6,6 +6,7 @@ use App\Exports\BayiExport;
 use App\Exports\ProductExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Bayi\CariSetRequest;
+use App\Http\Requests\Bayi\CariStoreRequest;
 use App\Imports\BayiImport;
 use App\Imports\ProductImport;
 use App\Models\Admin\BayiCariModel;
@@ -41,21 +42,7 @@ class BayiController extends Controller
             ->with("bayi", $bayi);
     }
 
-    public function store(Request $request){
-
-        $request->validate([
-            "bayi_adi"    => "required|min:2|max:80",
-            'password'=> [
-                'required',
-                'string',
-                Password::min(6)
-                    ->mixedCase()
-                    ->numbers()
-                    ->symbols()
-                    ->uncompromised(),
-                'confirmed'
-            ],
-        ]);
+    public function store(CariStoreRequest $request){
 
         $bayiRegister = new Bayi();
         $bayiRegister->fill($request->all());

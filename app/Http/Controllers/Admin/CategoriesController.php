@@ -11,8 +11,6 @@ class CategoriesController extends Controller
 {
     public function index(){
 
-//        $categories     = CategoriesModel::where('parent_id', '=', 0)->get();
-
         $allCategories  = CategoriesModel::all();
         $categories     = CategoriesModel::where('parent_id', 0)->get();
         return view("app.admin.page.categories.index")
@@ -23,10 +21,7 @@ class CategoriesController extends Controller
 
     public function store(Request $request){
 
-        $request->validate([
-
-            "name" => "required|min:2|max:100",
-        ]);
+        $request->validate(["name" => "required|min:2|max:100",]);
 
         $input = $request->all();
 

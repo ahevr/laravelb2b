@@ -22,29 +22,6 @@ class CategoryController extends Controller
 
         $productCount = ProductModel::count();
 
-
-//        switch (strip_tags(trim(request('sort')))) {
-//            case 'price_lowest':
-//                $product->orderBy("total_price", "Asc");
-//                break;
-//            case 'price_highest':
-//                $product->orderBy("total_price", "Desc");
-//                break;
-//            case 'a_to_z':
-//                $product->orderBy("id", "Asc");
-//                break;
-//            case 'z_to_a':
-//                $product->orderBy("id", "DESC");
-//                break;
-//            default:
-//                $product->orderBy("id", "DESC");
-//                break;
-//        }
-
-
-
-
-
         return view("app.site.page.kategoriler.index")
             ->with("product",$product)
             ->with("categories",$categories)

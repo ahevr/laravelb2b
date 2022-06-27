@@ -53,7 +53,6 @@
                     </div>
                 </div>
             </div>
-                <a href="{{route("admin.products.deleteproductsAll")}}" class="btn btn-danger"> <i class="fa fa-trash"></i> Tüm Verileri Sil</a>
         </div>
     @else
         <div class="card">
@@ -91,11 +90,19 @@
                             </div>
                         </div>
                     </div>
-                    @can("products-all-delete")
-                        <a href="{{route("admin.products.deleteproductsAll")}}" class="btn btn-danger  m-3"> <i class="fa fa-trash"></i> Tüm Verileri Sil</a>
-                    @endcan
                 </div>
             </div>
+
+            <form action="{{ route('admin.products.file-update') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">Excel Yükle</label>
+                    <input type="file" name="file" id="file"  class="form-control-file btn btn-success">
+                    <br>
+                </div>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                <input type="submit" name="submit" value="Yükle" class="btn btn-danger" />
+            </form>
             <div class="card-content">
             <div class="card-body">
                 <div class="table-responsive">

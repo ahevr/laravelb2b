@@ -7,8 +7,10 @@ use App\Helper\urlHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\ProductStoreRequest;
 use App\Imports\ProductImport;
+use App\Imports\ProductUpdate;
 use App\Models\Admin\CategoriesModel;
 use App\Models\Admin\ProductModel;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -80,7 +82,6 @@ class ProductController extends Controller
     public function update(Request $request , $id){
 
         $products = ProductModel::findOrFail($id);
-
         $products->fill($request->all());
         $products->product_url = urlHelper::permalink($request->product_name);
         $products->update_by   = Auth::guard("web")->id();
@@ -171,11 +172,12 @@ class ProductController extends Controller
         return back();
     }
 
-    public function deleteAll(){
+    public function fileUpdate(Request $request){
 
-        ProductModel::truncate();
+        Excel::import(new ProductUpdate,request()->file("file"));
         return back();
 
     }
+
 
 }

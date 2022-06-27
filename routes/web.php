@@ -150,7 +150,9 @@ Route::group(["namespace"=>"Admin","prefix"=>"admin","as" => "admin."],function 
             Route::post("/update/{id}","ProductController@update")->name("update");
             Route::get("/file-export", "ProductController@fileExport")->name("file-export");
             Route::post("/file-import", "ProductController@fileImport")->name('file-import');
-            Route::get ("/deleteAll","ProductController@deleteAll")->name("deleteproductsAll");
+
+            Route::post("/file-update", "ProductController@fileUpdate")->name('file-update');
+
             Route::get ("/search", "SearchController@index")->name("searchproducts");
         });
 

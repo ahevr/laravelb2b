@@ -25,9 +25,7 @@ class SliderController extends Controller
 
     public function store(Request $request){
 
-        $request->validate([
-            "title"=> "required|min:2|max:80","image"=> "required",
-        ]);
+        $request->validate(["title"=> "required|min:2|max:80","image"=> "required",]);
             $slider = new SliderModel();
             $slider->fill(request()->all());
             $slider->url   = urlHelper::permalink($request->title);

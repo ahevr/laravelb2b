@@ -146,7 +146,7 @@
 <div class="table-section bill-tbl w-100 mt-10">
     <table class="table w-100 mt-10">
         <tr>
-
+            <th class="w-50">Görsel</th>
             <th class="w-50">Ürün Adı</th>
             <th class="w-50">Adet</th>
             <th class="w-50">Liste Fiyatı</th>
@@ -155,6 +155,7 @@
 
         @foreach($sip as $row)
             <tr class="text-center">
+                <td><img src="{{public_path("app/admin/uploads/urunler/".$row->image)}}" width="80" alt=""> </td>
                 <td><b class="text-success">{{$row->product->product_name}}</b></td>
                 <td>{{$row->adet}}</td>
                 <td><b class="text-danger">{{number_format($row->fiyat,2,',','.')}} TL</b></td>
@@ -188,7 +189,6 @@
         </tr>
     </table>
 </div>
-
 </body>
 </html>
 

@@ -44,6 +44,12 @@ Route::group(["namespace"=>"site","as" => "site."],function (){
         Route::get ("/search","SearchController@index")->name("search");
 
 
+
+        Route::post("contactUsForm","HomePageController@ContactUsForm")->name("ContactUsForm");
+
+
+
+
         Route::group(["prefix"=>"urunler","as"=>"urunler."],function() {
             Route::get ("/","ProductController@index")->name("index");
             Route::get ("/{url}","ProductController@detail")->name("detail");
@@ -74,14 +80,17 @@ Route::group(["namespace"=>"site","as" => "site."],function (){
 
         });
 
-
+            // Hesabım Route** //
         Route::group(["prefix"=>"hesabim","as"=>"hesabim."],function() {
             Route::get( '/{id}', 'BioController@index')->name('index');
             Route::get( '/hesabimDetay/{id}', 'BioController@hesabimDetay')->name('hesabimDetay');
             Route::post("/resetpw","BioController@resetpw")->name("resetpw");
 
-
         });
+
+
+
+
 
 
 

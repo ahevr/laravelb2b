@@ -109,13 +109,13 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <input class="form-control" type="text" name="password" placeholder="Şifre" required>
+                                    <input class="form-control" type="password" name="password" placeholder="Şifre" required>
                                     @error('password')
                                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-md-12">
-                                    <input class="form-control" type="text" name="password_confirmation" placeholder="Şifre Tekrar" required>
+                                    <input class="form-control" type="password" name="password_confirmation" placeholder="Şifre Tekrar" required>
                                     @error('password_confirmation')
                                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                     @enderror

@@ -78,10 +78,5 @@ class Bayi extends Authenticatable
 
         parent::boot();
 
-        static::creating(function ($model) {
-
-            $model->email_verified = 1;
-        });
-
     }
 }

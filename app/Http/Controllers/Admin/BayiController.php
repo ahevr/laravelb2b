@@ -46,7 +46,8 @@ class BayiController extends Controller
 
         $bayiRegister = new Bayi();
         $bayiRegister->fill($request->all());
-        $bayiRegister->password =  Hash::make($request->password);
+        $bayiRegister->email_verified = 1;
+        $bayiRegister->password = Hash::make($request->password);
         $bayiRegister->save();
 
         return redirect("admin/bayi")->with("toast_success","$request->bayi_adi". " Adlı Bayi Başarılı Bir Şekilde Eklendi");

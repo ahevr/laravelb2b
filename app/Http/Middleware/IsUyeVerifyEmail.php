@@ -21,7 +21,7 @@ class IsUyeVerifyEmail
 
         if(!Auth::guard('bayi')->user()->email_verified){
             Auth::guard('bayi')->logout();
-            return redirect()->route("site.uye_login")->with("toast_success","Eposta Adresini Kontrol Et ve Maili Onayla")->withInput();
+            return redirect()->route("site.uye_login")->with("toast_error","Üye Kaydınız Kontrol Ediliyor. En Kısa Süre İçerisinde Onaylanacaktır.")->withInput();
         }
 
         return $next($request);

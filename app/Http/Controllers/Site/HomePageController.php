@@ -8,6 +8,7 @@ use App\Models\Admin\ProductModel;
 use App\Models\Admin\SlickModel;
 use App\Models\Admin\SliderModel;
 use App\Models\Bayi;
+use App\Models\ContactModel;
 use App\Models\Uye;
 use App\Models\VerifyBayi;
 use Carbon\Carbon;
@@ -221,16 +222,30 @@ class HomePageController extends Controller
             ];
 
             Mail::send("email-template",$mail_data,function($message)use($mail_data){
-                    $message->to($mail_data['recipient'])
+                    $message->to("egesedefb2b@egesedefavize.com")
                              ->from($mail_data["fromEmail"],$mail_data["fromName"])
                              ->subject($mail_data["subject"]);
             });
 
         return redirect()->route("site.uye_login")
             ->with("save",$save)
-            ->with("toast_success", "Kayıt İşleminiz Başarılı Bir Şekilde Tamamlandı.Eposta adresinize gelen maili onaylayladıktan sonra giriş yapabilirsiniz.");
+            ->with("toast_success", "Kayıt İşleminiz Başarılı Bir Şekilde Tamamlandı.Üyeliğiniz Kontrol Edildikten Sonra Onaylanacaktır.");
 
 
+    }
+
+    public function ContactUsForm(Request $request){
+
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|max:10',
+            'message' => 'required'
+        ]);
+
+        ContactModel::create($request->all());
+
+        return back()->with("toast_success","$request->name"." "."Mesajınızı aldık bize yazdığınız için teşekkür ederiz.");
     }
 
 

@@ -13,6 +13,7 @@ class ProductController extends Controller
 {
 
     public function index(){
+
         $productGetAll = ProductModel::IsActive();
         $categories    = CategoriesModel::where('parent_id', 0)->get();
         $productCount  = ProductModel::count();

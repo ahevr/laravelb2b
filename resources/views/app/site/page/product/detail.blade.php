@@ -116,6 +116,7 @@
                                         {{$productDetailGet->stock_quantity}} Adet
                                     @else
                                         <span style="color: red">Stokta Yok !</span>
+                                        Stokları 0 olan ürünlerin siparişi için bölge temsilcinizden bilgi alabilirisiniz.
                                     @endif
                                 </span>
                             </div>

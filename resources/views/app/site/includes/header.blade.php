@@ -9,7 +9,7 @@
                     <!-- /Menu Toggle -->
                 </div>
                 <div class="col-auto hdr-logo">
-                    <a href="{{route("site.index")}}" class="logo"><img srcset="{{asset("app/site")}}/images/skins/fashion/logo.png 1x,{{asset("app/site")}}/images/skins/fashion/logo2x.png 2x" alt="Logo"></a>
+                    <a href="{{route("site.index")}}" class="logo"><img srcset="{{asset("app/site")}}/images/logo.png 1x,{{asset("app/site")}}/images/logo.png 2x" alt="Logo"></a>
                 </div>
                 <!--navigation-->
                 <div class="hdr-nav hide-mobile nav-holder-s"></div>
@@ -86,9 +86,11 @@
                     </div>
                     <div class="col hdr-topline-center">
                         <div class="custom-text js-custom-text-carousel" data-slick='{"speed": 1000, "autoplaySpeed": 3000}'>
-                            <div class="custom-text-item"><i class="icon-fox"></i> Use promocode <span>FOXIC</span> to get 15% discount!</div>
-                            <div class="custom-text-item"><i class="icon-air-freight"></i> <span>Free</span> plane shipping over <span>$250</span></div>
-                            <div class="custom-text-item"><i class="icon-gift"></i> Today only! Post <span>holiday</span> Flash Sale! 2 for $20</div>
+                            @foreach($slick as $rowSlick)
+                                <div class="custom-text-item"><i class="icon-stopwatch"></i>
+                                    {{$rowSlick->title}}
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="col hdr-topline-right hide-mobile">
@@ -114,7 +116,7 @@
                         <!-- /Menu Toggle -->
                     </div>
                     <div class="col-auto hdr-logo">
-                        <a href="index.html" class="logo"><img srcset="{{asset("app/site")}}/images/skins/fashion/logo.png 1x,{{asset("app/site")}}/images/skins/fashion/logo2x.png 2x" alt="Logo"></a>
+                        <a href="{{route("site.index")}}" class="logo"><img width="150px" srcset="{{asset("app/site")}}/images/logo.png 1x,{{asset("app/site")}}/images/logo.png 2x" alt="Logo"></a>
                     </div>
                     <!--navigation-->
                     <div class="hdr-nav hide-mobile nav-holder justify-content-center px-4">
@@ -123,7 +125,6 @@
                             <li><a href="{{route("site.index")}}">Ana Sayfa</a></li>
                             <li><a href="{{route("site.urunler.index")}}">Ürünler</a></li>
                             <li><a href="https://egesedefavize.com/kataloglar">Kataloglar</a></li>
-                            <li><a href="#">İletişim</a></li>
                             <li><a href="https://tahsilat.egesedefavize.com/">Ödeme Yap</a></li>
                         </ul>
                         <!--/mmenu-->
@@ -199,7 +200,6 @@
                         <li><a href="{{route("site.index")}}">Ana Sayfa</a></li>
                         <li><a href="{{route("site.urunler.index")}}">Ürünler</a></li>
                         <li><a href="https://egesedefavize.com/kataloglar">Kataloglar</a></li>
-                        <li><a href="#">İletişim</a></li>
                         <li><a href="https://tahsilat.egesedefavize.com/">Ödeme Yap</a></li>
                     </ul>
                 </div>

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\PopupsModel;
 use App\Models\Admin\ProductModel;
+use App\Models\Admin\SlickModel;
+use App\Models\Admin\SliderModel;
 use App\Models\Bayi;
 use App\Models\Uye;
 use App\Models\VerifyBayi;
@@ -19,10 +22,9 @@ class HomePageController extends Controller
 {
 
     public function index(){
-
-        return view("app.site.page.home.homepage");
-
-
+        $slider = SliderModel::all();
+        return view("app.site.page.home.homepage")
+            ->with("slider",$slider);
     }
 
 

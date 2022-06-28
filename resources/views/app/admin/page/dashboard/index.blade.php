@@ -163,13 +163,13 @@
         </div>
         <hr>
         <div class="row">
-            <div class="col-12 col-lg-6 col-md-6">
+            <div class="col-md-12 ">
                 <div class="header">
                     <h4 class="card-title">{{__('messages.Ürün Yükleme Şablonları')}}</h4>
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="card">
                             <div class="card-body">
                                 <div class="row">
@@ -186,7 +186,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="card">
                             <div class="card-body">
                                 <div class="row">
@@ -198,6 +198,23 @@
                                     <div class="col-md-9">
                                         <h6 class="text-muted font-semibold">Excel İle Ürün Yükleme</h6>
                                         <small>Örnek Ürün Şablonu <a href="{{asset("app/excel-upload/ürün-yükleme.xlsx")}}" download>İndir</a></small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="stats-icon white">
+                                            <i class="fa-solid fa-file-excel"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <h6 class="text-muted font-semibold">Excel İle Ürün Güncelleme</h6>
+                                        <small>Örnek Ürün Güncelleme Şablonu <a href="{{asset("app/excel-upload/ürün-update.xlsx")}}" download>İndir</a></small>
                                     </div>
                                 </div>
                             </div>

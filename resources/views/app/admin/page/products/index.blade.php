@@ -90,19 +90,38 @@
                             </div>
                         </div>
                     </div>
+                    <button type="button" class="btn btn-warning  m-3" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-file-excel"></i>
+                        Toplu Ürün Güncelle
+                    </button>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Toplu Ürün Güncelle</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="{{ route('admin.products.file-update') }}" method="post" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="form-group">
+                                            <label for="exampleFormControlFile1">Excel Yükle</label>
+                                            <input type="file" name="file" id="file"  class="form-control-file btn btn-success">
+                                            <br>
+                                        </div>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                                        <input type="submit" name="submit" value="Yükle" class="btn btn-danger" />
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
-            <form action="{{ route('admin.products.file-update') }}" method="post" enctype="multipart/form-data">
-                @csrf
-                <div class="form-group">
-                    <label for="exampleFormControlFile1">Excel Yükle</label>
-                    <input type="file" name="file" id="file"  class="form-control-file btn btn-success">
-                    <br>
-                </div>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
-                <input type="submit" name="submit" value="Yükle" class="btn btn-danger" />
-            </form>
+
             <div class="card-content">
             <div class="card-body">
                 <div class="table-responsive">

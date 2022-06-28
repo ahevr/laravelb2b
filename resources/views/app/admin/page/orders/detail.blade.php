@@ -72,6 +72,13 @@
                                     <small  class="form-text text-muted">Sipariş Tarihi Bilgisi</small>
                                 </div>
                             </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Sipariş Notu</label>
+                                    <textarea id="summernote" name="product_desc" disabled >{{ $orders->not }} </textarea>
+                                    <small  class="form-text text-muted">Sipariş Tarihi Bilgisi</small>
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <table class="table table-bordered">

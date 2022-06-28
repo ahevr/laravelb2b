@@ -18,6 +18,7 @@ trait ProductTrait {
     public function getData($model){
 
         return $model::all();
+
     }
 
 

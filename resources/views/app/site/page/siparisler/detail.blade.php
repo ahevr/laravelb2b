@@ -49,6 +49,13 @@
                             <small  class="form-text text-muted">Sipariş Tarihi Bilgisi</small>
                         </div>
                     </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Sipariş Tarihi</label>
+                            <textarea class="form-control form-control--sm" name="not" cols="30" rows="10" disabled>{{$row->not}}</textarea>
+                            <small  class="form-text text-muted">Sipariş Tarihi Bilgisi</small>
+                        </div>
+                    </div>
                 </div>
                 <hr>
                 <div class="row">

@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\CategoriesModel;
 use App\Models\Admin\ProductModel;
+use App\Models\Admin\SlickModel;
 use App\Models\Bayi;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index(){
 
+    public function index(){
         $productGetAll = ProductModel::IsActive();
         $categories    = CategoriesModel::where('parent_id', 0)->get();
         $productCount  = ProductModel::count();
@@ -46,6 +47,8 @@ class ProductController extends Controller
 
     public function detail($url){
 
+        $slick  = SlickModel::all();
+
         $productDetailGet = ProductModel::where("product_url",$url)->IsActive()->firstOrFail();
 
         $randomProductGet = ProductModel::inRandomOrder()->isactive()->limit(4)->get();
@@ -55,7 +58,8 @@ class ProductController extends Controller
         return view("app.site.page.product.detail")
             ->with("productDetailGet",$productDetailGet)
             ->with("randomProductGet",$randomProductGet)
-            ->with("categories",$categories);
+            ->with("categories",$categories)
+            ->with("slick",$slick);
     }
 
 

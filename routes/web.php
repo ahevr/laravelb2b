@@ -150,9 +150,7 @@ Route::group(["namespace"=>"Admin","prefix"=>"admin","as" => "admin."],function 
             Route::post("/update/{id}","ProductController@update")->name("update");
             Route::get("/file-export", "ProductController@fileExport")->name("file-export");
             Route::post("/file-import", "ProductController@fileImport")->name('file-import');
-
             Route::post("/file-update", "ProductController@fileUpdate")->name('file-update');
-
             Route::get ("/search", "SearchController@index")->name("searchproducts");
         });
 
@@ -193,6 +191,13 @@ Route::group(["namespace"=>"Admin","prefix"=>"admin","as" => "admin."],function 
             Route::get('/downloadPDF/{id}','OrdersController@downloadPDF')->name('downloadPDF');
             Route::get("/detail/{id}","OrdersController@detail")->name("detail");
             Route::get ("/searchOrder", "OrdersController@searchOrder")->name("searchOrder");
+        });
+
+        Route::group(["prefix"=>"slick","as"=>"slick."],function() {
+            Route::get( "/","SlickController@index")->name("index");
+            Route::get ("/createForm","SlickController@create")->name("create");
+            Route::post("/store","SlickController@store")->name("store");
+            Route::get ("/delete/{id}","SlickController@delete")->name("delete");
         });
 
 

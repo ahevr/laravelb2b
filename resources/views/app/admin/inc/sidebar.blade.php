@@ -82,6 +82,14 @@
                     </a>
                 </li>
 
+                <li class="sidebar-item {{(request()->is('admin/slick')) ? 'active' : ""}} ">
+                    <a href="{{route("admin.slick.index")}}" class='sidebar-link'>
+                        <i class="fa-solid fa-podcast"></i>
+                        <span>Slick Slider</span>
+                    </a>
+                </li>
+
+
 
             </ul>
         </div>

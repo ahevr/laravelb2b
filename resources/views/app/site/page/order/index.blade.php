@@ -80,6 +80,10 @@
                                             <div class="form-group">
                                                 <input type="text" name="telefon" class="form-control form-control--sm">
                                             </div>
+                                            <label>Sipariş Notları:</label>
+                                            <div class="form-group">
+                                                <textarea class="form-control form-control--sm" name="not" cols="30" rows="10" placeholder="yedek parça siparişleriniz veya siparişlerinize ait notlarınızı buraya yazabilirsiniz"></textarea>
+                                            </div>
                                         </div>
                                         <button type="submit" class="btn btn--full btn--lg mt-5">Sepeti Onayla</button>
                                     </div>
